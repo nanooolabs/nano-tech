@@ -1,0 +1,313 @@
+.c {
+  &__button {
+    padding: var(--t-button-padding);
+    border-radius: var(--t-button-border-radius);
+    &__content {
+      font-weight: var(--t-font-weight-button);
+    }
+    &__size {
+      &--default {
+        font-size: 16px;
+      }
+      &--large {
+        font-size: 18px;
+      }
+      &--xlarge {
+        font-size: 20px;
+      }
+    }
+    &__anchor-element {
+      text-decoration: none;
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: none;
+      }
+      > span.c__button {
+        display: inline-block;
+      }
+    }
+    &--primary {
+      background: var(--t-primary-branding-color);
+      color: var(--t-cp-base-white);
+      &:hover {
+        background: var(--t-primary-branding-hover-color);
+      }
+    }
+    &--secondary {
+      background: var(--t-secondary-branding-color);
+      color: var(--t-cp-base-white);
+      &:hover {
+        background: var(--t-secondary-branding-hover-color);
+      }
+    }
+    &--ghost {
+      &-primary {
+        background: transparent;
+        border: 2px solid var(--t-primary-branding-color);
+        color: var(--t-primary-branding-color);
+        &:hover {
+          background: var(--t-primary-branding-hover-color);
+          color: var(--t-cp-base-white);
+        }
+      }
+      &-secondary {
+        background: transparent;
+        border: 2px solid var(--t-secondary-branding-color);
+        color: var(--t-secondary-branding-color);
+        &:hover {
+          background: var(--t-secondary-branding-hover-color);
+          color: var(--t-cp-base-white);
+        }
+      }
+    }
+    &--link {
+      background-color: transparent;
+      border: none;
+      color: var(--t-anchor-color);
+      padding: 0;
+      .c {
+        &__button {
+          &__content {
+            font-weight: 600 !important;
+          }
+        }
+      }
+      &:hover {
+        color: var(--t-anchor-hover-color);
+        .c {
+          &__button__content {
+            text-decoration: underline;
+            text-underline-offset: 6px;
+            text-decoration-thickness: 1px;
+          }
+        }
+        svg {
+          path {
+            stroke: var(--t-anchor-hover-color);
+          }
+        }
+      }
+    }
+  }
+  &__button-wrapper {
+    &--flex {
+      @media (min-width: 576px) {
+        display: flex;
+        margin-left: -7px;
+        margin-right: -7px;
+      }
+      &__column {
+        &--left {
+          margin-bottom: 0.75rem;
+          @media (min-width: 576px) {
+            margin-bottom: 0;
+          }
+        }
+        @media (min-width: 576px) {
+          padding-left: 7px;
+          padding-right: 7px;
+        }
+        .c {
+          &__button {
+            @media (max-width: 576px) {
+              width: 100%;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__hamburger {
+    outline: 0;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+    display: block;
+    transform: none;
+    position: relative;
+    width: 24px;
+    height: 18px;
+    cursor: pointer;
+    z-index: 1001;
+    &__line {
+      display: block;
+      width: 25px;
+      height: 4px;
+      background-color: var(--t-primary-branding-color);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 10px;
+      transform-origin: 50% 50%;
+      margin-top: -1px;
+      transition: all 0.2s ease;
+      &-top {
+        top: 0;
+      }
+      &-middle {
+        top: 50%;
+      }
+      &-bottom {
+        top: 100%;
+      }
+    }
+    &-is-active {
+      height: 13px;
+      position: fixed;
+      right: 15px;
+      top: 27px;
+      .c__hamburger__line-top {
+        transform: translateX(-50%) rotate(45deg);
+        top: 5px;
+      }
+      .c__hamburger__line-middle {
+        opacity: 0;
+      }
+      .c__hamburger__line-bottom {
+        transform: translateX(-50%) rotate(-45deg);
+        top: 5px;
+      }
+    }
+  }
+  &__drawer {
+    &-nav {
+      @media (min-width: 992px) {
+        display: none;
+      }
+    }
+    display: block;
+    pointer-events: none;
+    position: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    z-index: 1000;
+    top: 0;
+    bottom: 0;
+    width: 18.75em;
+    max-width: 100%;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #f8f8f8;
+    right: 0;
+    transform: translateX(100%);
+    &__header-wrapper {
+      padding: 1rem 1.3rem;
+      text-align: left;
+      background-color: #fff;
+    }
+    &-is-active {
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+  &__drawer-tint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    transform: translateZ(0);
+    z-index: 999;
+    transition:
+      visibility 0.4s linear,
+      opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    &-is-active {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: all;
+      @media (min-width: 992px) {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        display: none;
+      }
+    }
+  }
+  &__image-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+  &__richtext-field {
+    p,
+    ul li,
+    ol li {
+      font-size: inherit;
+    }
+    ol li {
+      margin-bottom: 0.5rem;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        margin-bottom: 1rem;
+        padding-left: 1.75rem;
+        position: relative;
+        &:before {
+          content: "";
+          position: absolute;
+          top: 4px;
+          left: 0;
+          background-image: url(https://www.taylor.com/hubfs/_Taylor.com%20-%20All%20file%20connected%20%20to%20main%20site%20and%20blogs/Products%20Overview%20Pages/Omnichannel/Verson%202%20Update/icons/Check%20item%20text.svg);
+          background-size: contain;
+          background-repeat: no-repeat;
+          width: 20px;
+          height: 18px;
+        }
+      }
+    }
+    &--list-dash {
+      ul {
+        li {
+          margin-bottom: 0.5rem;
+          &:before {
+            background-image: url("data:image/svg+xml,%3Csvg width='16' height='2' viewBox='0 0 16 2' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='2' fill='url(%23paint0_linear_477_1137)'/%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear_477_1137' x1='1.01466' y1='0.130607' x2='1.41038' y2='3.28796' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23C000FF'/%3E%3Cstop offset='1' stop-color='%238A0ABF'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
+            top: 12px;
+            width: 16px;
+            height: 16px;
+          }
+        }
+      }
+    }
+  }
+  &__testimonial-banner {
+    // background-color: var(--t-primary-branding-color);
+    background: linear-gradient(348deg, #000 26.07%, #6b00bb 100.23%);
+    border-radius: 40px;
+    padding: 2rem;
+    @media (min-width: 768px) {
+      padding: 4rem;
+    }
+    .c {
+      &__testimonial-banner {
+        &__heading,
+        &__title,
+        &__company {
+          color: var(--t-cp-base-white);
+        }
+      }
+    }
+  }
+  &__cta-strip-stacked {
+    &__wrapper {
+      // background: linear-gradient(348deg, #000 16.07%, #1800ff 96.23%);
+      background: linear-gradient(160deg, #000 26.07%, #1101ad 100.23%);
+      padding: 2rem;
+      border-radius: 40px;
+      @media (min-width: 768px) {
+        padding: 4rem;
+      }
+    }
+  }
+  // New component styles here
+}
