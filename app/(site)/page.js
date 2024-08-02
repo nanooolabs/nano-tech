@@ -1,4 +1,4 @@
-import { getPage, getPages } from "@/sanity/sanity-utils";
+import { getPage, getPages } from "@/sanity/utils/Queries";
 
 export default async function Home() {
   const pages = await getPages();

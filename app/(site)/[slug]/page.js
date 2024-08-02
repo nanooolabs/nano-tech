@@ -1,4 +1,4 @@
-import { getPage } from "@/sanity/sanity-utils";
+import { getPage } from "@/sanity/utils/Queries";
 
 export default async function Page({ params }) {
   const page = await getPage(params.slug);

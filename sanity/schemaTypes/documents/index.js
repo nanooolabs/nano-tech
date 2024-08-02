@@ -1,5 +1,5 @@
-import page from "@/sanity/schemaTypes/documents/page";
+import Page from "@/sanity/schemaTypes/documents/Page";
 
-const schemaTypes = [page];
+const schemaTypes = [Page];
 
 export default schemaTypes;
