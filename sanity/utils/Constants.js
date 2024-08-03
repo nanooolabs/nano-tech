@@ -4,7 +4,7 @@ export const Groups = [
     title: "SEO",
   },
   {
-    name: "main_content",
-    title: "Main Content",
+    name: "content",
+    title: "Content",
   },
 ];

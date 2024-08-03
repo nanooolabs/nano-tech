@@ -2,14 +2,21 @@
 import Button from "@/components/modules/Button";
 import parse from "html-react-parser";
 import Bounded from "@/components/wrappers/Bounded";
-import { PrismicNextImage } from "@prismicio/next";
 import styled from "styled-components";
 import BlurryBlob from "@/components/modules/BlurryBlob";
 import Pill from "@/components/modules/Pill";
 import Image from "next/image";
+import imageUrlBuilder from "@sanity/image-url";
+import ClientConfig from "@/sanity/config/ClientConfig";
+
+const builder = imageUrlBuilder(ClientConfig);
+
+function urlFor(source) {
+  return builder.image(source);
+}
 
 const Wrapper = styled.div`
-  .b__hero__variation02 {
+  .b__hero__variant02 {
     &__row {
       --bs-gutter-x: 2rem;
       --bs-gutter-y: 2rem;
@@ -42,15 +49,15 @@ const Wrapper = styled.div`
   }
 `;
 
-const HeroVariation02 = ({ slice }) => {
+const HeroVariant02 = ({ data }) => {
+  console.log(data.image.asset.url);
   return (
     <Bounded
-      type={slice.slice_type}
-      variation={slice.variation}
-      className="b__hero__variation02 overflow-hidden position-relative"
-      scopedCss={slice.primary.scoped_css}
+      type={data._type}
+      scopedCss={data.scoped_css}
+      className="b__hero__variant02 overflow-hidden position-relative"
     >
-      {slice.primary.enable_blobs && (
+      {data.enable_blobs && (
         <>
           <BlurryBlob top="-20rem" left="-20rem" />
           <BlurryBlob
@@ -62,48 +69,40 @@ const HeroVariation02 = ({ slice }) => {
       )}
       <Wrapper className="container position-relative u__z-index-1">
         <div
-          className={`row b__hero__variation02__row ${slice.primary.align_items_center ? "align-items-center" : ``}`}
+          className={`row b__hero__variant02__row ${data.align_items_center ? "align-items-center" : ``}`}
         >
           <div className="col-lg-6">
-            {slice.primary.label && <Pill title={slice.primary.label} />}
-            {slice.primary.heading && (
+            {data.label && <Pill title={data.label} />}
+            {data.heading && (
               <div className="c__heading-wrapper mb-4">
-                <h1 className="c__heading u__d2">
-                  {parse(slice.primary.heading)}
-                </h1>
+                <h1 className="c__heading u__d2">{parse(data.heading)}</h1>
               </div>
             )}
-            {slice.primary.content && (
+            {data.content && (
               <div className="c__description-wrapper">
-                <p className="c__description u__h6">
-                  {parse(slice.primary.content)}
-                </p>
+                <p className="c__description u__h6">{parse(data.content)}</p>
               </div>
             )}
 
             <div className="c__button-wrapper mt-4 pt-3">
               <Button
-                destination={slice.primary.button_destination}
-                title={slice.primary.button_title}
+                destination={data.button_destination}
+                title={data.button_title}
               />
             </div>
           </div>
           <div className="col-lg-6">
-            {slice.primary.image && (
+            {data.image && (
               <>
-                {console.log(
-                  `data:image/png;base64,${slice.primary.image.url?.split("?")[0]}?fm=blurhash`
-                )}
-                <div className="b__hero__variation02__image-wrapper">
+                <div className="b__hero__variant02__image-wrapper">
                   <figure className="m-0 d-inline">
-                    <PrismicNextImage
-                      className="b__hero__variation02__image"
-                      placeholder="blur"
-                      field={slice.primary.image}
-                      blurDataURL={`${slice.primary.image.url?.split("?")[0]}?fm=blurhash&w=50`}
-                      // blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAI0lEQVR4nGMINGf4/+3at/t7+2viGNQZGKbE69UlOSV5mgEAnuYKmizl818AAAAASUVORK5CYII="
+                    <Image
+                      className="b__hero__variant02__image"
                       fill={true}
-                      alt={slice.primary.image.alt}
+                      placeholder="blur"
+                      blurDataURL={data.image.asset.metadata.lqip}
+                      src={urlFor(data.image).url()}
+                      alt={data.image.alt ?? ""}
                     />
                   </figure>
                 </div>
@@ -116,4 +115,4 @@ const HeroVariation02 = ({ slice }) => {
   );
 };
 
-export default HeroVariation02;
+export default HeroVariant02;

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sanity/image-url": "^1.0.2",
     "@sanity/structure": "^2.30.4",
     "@sanity/vision": "^3.52.4",
     "bootstrap": "^5.3.3",

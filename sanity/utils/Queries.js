@@ -21,7 +21,14 @@ export async function getPage(slug) {
         title,
         "slug": slug.current,
         "image": image.asset->url,
-        content
+        page_builder[] {
+          ...,
+          image {
+            ... {
+              asset->
+            }
+          }
+        }
     }`,
     { slug }
   );

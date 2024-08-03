@@ -1,4 +1,4 @@
-import HeroVariation01 from "./HeroVariation01";
-import HeroVariation02 from "./HeroVariation02";
+import HeroVariant01 from "./HeroVariant01";
+import HeroVariant02 from "./HeroVariant02";
 
-export { HeroVariation01, HeroVariation02 };
+export { HeroVariant01, HeroVariant02 };

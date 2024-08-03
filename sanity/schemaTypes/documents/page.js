@@ -1,5 +1,6 @@
 import { Groups } from "@/sanity/utils/Constants";
 import { isUniqueAcrossAllDocuments } from "@/sanity/utils/Helpers";
+import { defineField, defineType, defineArrayMember } from "sanity";
 
 export const Page = {
   name: "page",
@@ -48,8 +49,8 @@ export const Page = {
       initialValue: () => false,
     },
     {
-      name: "image",
-      title: "Image",
+      name: "featured_image",
+      title: "Featured Image",
       type: "image",
       group: "seo",
       options: { hotspot: true },
@@ -61,17 +62,22 @@ export const Page = {
         },
       ],
     },
-    {
-      name: "content",
-      title: "Content",
+    defineField({
+      name: "page_builder",
+      title: "Page Builder",
       type: "array",
-      group: "main_content",
+      group: "content",
       of: [
-        {
-          type: "block",
-        },
+        defineArrayMember({
+          name: "HeroVariant01",
+          type: "HeroVariant01",
+        }),
+        defineArrayMember({
+          name: "HeroVariant02",
+          type: "HeroVariant02",
+        }),
       ],
-    },
+    }),
   ],
 };
 
