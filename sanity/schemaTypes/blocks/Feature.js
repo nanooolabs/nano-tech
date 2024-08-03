@@ -194,8 +194,8 @@ export const FeatureVariant02 = defineType({
       },
     }),
     defineField({
-      name: "cards",
-      title: "Cards",
+      name: "repeater",
+      title: "Repeater",
       type: "array",
       of: [
         {

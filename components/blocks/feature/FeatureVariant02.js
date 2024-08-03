@@ -43,12 +43,12 @@ const FeatureVariant02 = ({ data }) => {
             )}
           </div>
         </div>
-        {data.cards && (
+        {data.repeater && (
           <div className="container position-relatie u__z-index-1 mt-4 pt-4">
             <div
               className={`row b__feature__variant02__row justify-content-${data.justify_content}`}
             >
-              {data.cards.map((elem, index) => {
+              {data.repeater.map((elem, index) => {
                 const {
                   image,
                   heading,

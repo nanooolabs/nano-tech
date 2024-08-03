@@ -19,7 +19,7 @@ export async function getPage(slug) {
         ...,
         page_builder[] {
           ...,
-          cards[] {
+          repeater[] {
             ...,
             image {
               ... {
