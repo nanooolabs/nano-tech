@@ -76,7 +76,27 @@ export const Page = {
           name: "HeroVariant02",
           type: "HeroVariant02",
         }),
+        defineArrayMember({
+          name: "FeatureVariant01",
+          type: "FeatureVariant01",
+        }),
       ],
+      options: {
+        insertMenu: {
+          groups: [
+            {
+              name: "hero",
+              title: "Hero",
+              of: ["HeroVariant01", "HeroVariant02"],
+            },
+            {
+              name: "feature",
+              title: "Feature",
+              of: ["FeatureVariant01"],
+            },
+          ],
+        },
+      },
     }),
   ],
 };

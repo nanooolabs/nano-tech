@@ -3,13 +3,12 @@ import Button from "@/components/modules/Button";
 import parse from "html-react-parser";
 import Bounded from "@/components/wrappers/Bounded";
 import styled from "styled-components";
-import BlurryBlob from "@/components/modules/BlurryBlob";
-import Pill from "@/components/modules/Pill";
-import Image from "next/image";
 import urlFor from "@/lib/imageUrlBuilder";
+import Image from "next/image";
+import { PortableText } from "@portabletext/react";
 
 const Wrapper = styled.div`
-  .b__hero__variant02 {
+  .b__feature__variant01 {
     &__row {
       --bs-gutter-x: 2rem;
       --bs-gutter-y: 2rem;
@@ -42,37 +41,35 @@ const Wrapper = styled.div`
   }
 `;
 
-const HeroVariant02 = ({ data }) => {
+const FeatureVariant01 = ({ data }) => {
   return (
     <Bounded
       type={data._type}
       scopedCss={data.scoped_css}
-      className="b__hero__variant02 overflow-hidden position-relative"
+      className="b__feature__variant01 overflow-hidden position-relative"
     >
-      {data.enable_blobs && (
-        <>
-          <BlurryBlob top="-20rem" left="-20rem" />
-          <BlurryBlob
-            bottom="-20rem"
-            right="0rem"
-            color="var(--t-blob-color-2)"
-          />
-        </>
-      )}
       <Wrapper className="container position-relative u__z-index-1">
         <div
-          className={`row b__hero__variant02__row ${data.align_items_center ? "align-items-center" : ``}`}
+          className={`row b__feature__variant01__row ${data.align_items_center ? "align-items-center" : ``}`}
         >
-          <div className="col-lg-6">
-            {data.label && <Pill title={data.label} />}
+          <div
+            className={`col-lg-6 ${data.invert_order ? `order-lg-2` : `order-lg-1`}`}
+          >
+            {data.label && (
+              <div>
+                <span className="u__subtitle d-block mb-2 u__f-500 u__text-branding-primary">
+                  {parse(data.label)}
+                </span>
+              </div>
+            )}
             {data.heading && (
               <div className="c__heading-wrapper mb-4">
-                <h1 className="c__heading u__d2">{parse(data.heading)}</h1>
+                <h2 className="c__heading u__h2">{parse(data.heading)}</h2>
               </div>
             )}
             {data.content && (
-              <div className="c__description-wrapper">
-                <p className="c__description u__h6">{parse(data.content)}</p>
+              <div className="c__richtext-field">
+                <PortableText value={data.content} />
               </div>
             )}
 
@@ -83,12 +80,14 @@ const HeroVariant02 = ({ data }) => {
               />
             </div>
           </div>
-          <div className="col-lg-6">
+          <div
+            className={`col-lg-6 ${data.invert_order ? `order-lg-1` : `order-lg-2`}`}
+          >
             {data.image && (
               <>
-                <div className="b__hero__variant02__image-wrapper">
+                <div className="b__feature__variant01__image-wrapper">
                   <Image
-                    className="b__hero__variant02__image"
+                    className="b__feature__variant01__image"
                     fill={true}
                     placeholder="blur"
                     blurDataURL={data.image.asset.metadata.lqip}
@@ -106,4 +105,4 @@ const HeroVariant02 = ({ data }) => {
   );
 };
 
-export default HeroVariant02;
+export default FeatureVariant01;

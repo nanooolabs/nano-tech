@@ -1,5 +1,7 @@
 import { defineField, defineType } from "sanity";
 
+const category = "hero";
+
 export const HeroVariant01 = defineType({
   name: "HeroVariant01",
   title: "Hero Variant 01",
@@ -22,6 +24,15 @@ export const HeroVariant01 = defineType({
       rows: 4,
       group: "style",
       initialValue: `padding: 64px 0;`,
+    }),
+    defineField({
+      name: "block_category",
+      title: "Block Category",
+      type: "string",
+      initialValue: category,
+      group: "content",
+      readOnly: true,
+      hidden: true,
     }),
     defineField({
       name: "enable_blobs",
@@ -75,6 +86,18 @@ export const HeroVariant01 = defineType({
       group: "content",
     }),
   ],
+  preview: {
+    select: {
+      heading: "heading",
+    },
+    prepare(selection) {
+      const { heading } = selection;
+      return {
+        title: heading || "Heading needs to be set",
+        subtitle: "Hero Variant 01",
+      };
+    },
+  },
 });
 
 export const HeroVariant02 = defineType({
@@ -92,6 +115,15 @@ export const HeroVariant02 = defineType({
     },
   ],
   fields: [
+    defineField({
+      name: "block_category",
+      title: "Block Category",
+      type: "string",
+      initialValue: category,
+      group: "content",
+      readOnly: true,
+      hidden: true,
+    }),
     defineField({
       name: "scoped_css",
       title: "Scoped CSS",
@@ -164,4 +196,17 @@ export const HeroVariant02 = defineType({
       ],
     }),
   ],
+  preview: {
+    select: {
+      heading: "heading",
+    },
+    prepare(selection) {
+      const { heading } = selection;
+      console.log(selection);
+      return {
+        title: heading || "Heading needs to be set",
+        subtitle: "Hero Variant 02",
+      };
+    },
+  },
 });

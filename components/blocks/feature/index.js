@@ -1,11 +1,3 @@
-import FeatureDefault from "./FeatureDefault";
-import FeatureVariation01 from "./FeatureVariation01";
-import FeatureVariation02 from "./FeatureVariation02";
-import FeatureVariation03 from "./FeatureVariation03";
+import FeatureVariant01 from "./FeatureVariant01";
 
-export {
-  FeatureDefault,
-  FeatureVariation01,
-  FeatureVariation02,
-  FeatureVariation03,
-};
+export { FeatureVariant01 };

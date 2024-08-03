@@ -16,11 +16,7 @@ export async function getPages() {
 export async function getPage(slug) {
   return createClient(ClientConfig).fetch(
     groq`*[_type == "page" && slug.current == $slug][0]{
-        _id,
-        _createdAt,
-        title,
-        "slug": slug.current,
-        "image": image.asset->url,
+        ...,
         page_builder[] {
           ...,
           image {

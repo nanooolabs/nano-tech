@@ -1,8 +1,8 @@
 import Page from "@/sanity/schemaTypes/documents/Page";
-import { HeroVariant01, HeroVariant02 } from "@/sanity/schemaTypes/blocks/Hero";
+import pageBuilderBlocks from "./blocks";
 
 const documents = [Page];
-const blocks = [HeroVariant01, HeroVariant02];
+const blocks = [...pageBuilderBlocks];
 
 const schemaTypes = [...documents, ...blocks];
 
