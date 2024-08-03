@@ -19,11 +19,19 @@ export async function getPage(slug) {
         ...,
         page_builder[] {
           ...,
+          cards[] {
+            ...,
+            image {
+              ... {
+                asset->
+              }
+            },
+          },
           image {
             ... {
               asset->
             }
-          }
+          },
         }
     }`,
     { slug }

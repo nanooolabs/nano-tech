@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import parse from "html-react-parser";
 import Button from "./Button";
-import { PrismicNextImage } from "@prismicio/next";
+import Image from "next/image";
 
 const Component = styled.div`
   padding: 2rem 1.5rem;
@@ -54,10 +54,17 @@ const IconCard = ({
   return (
     <Component className={`c__icon-card c__icon-card--${style}`}>
       <div className="c__icon-card__wrapper">
-        {icon && (
+        {icon && icon.src && (
           <div className="c__icon-card__icon-wrapper">
             <figure className="m-0">
-              <PrismicNextImage field={icon} alt={icon.alt} />
+              <Image
+                placeholder="blur"
+                blurDataURL={icon.blurDataURL}
+                src={icon.src}
+                alt={icon.alt ?? ""}
+                width={500}
+                height={500}
+              />
             </figure>
           </div>
         )}

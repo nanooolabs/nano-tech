@@ -80,6 +80,10 @@ export const Page = {
           name: "FeatureVariant01",
           type: "FeatureVariant01",
         }),
+        defineArrayMember({
+          name: "FeatureVariant02",
+          type: "FeatureVariant02",
+        }),
       ],
       options: {
         insertMenu: {
@@ -92,7 +96,7 @@ export const Page = {
             {
               name: "feature",
               title: "Feature",
-              of: ["FeatureVariant01"],
+              of: ["FeatureVariant01", "FeatureVariant02"],
             },
           ],
         },
