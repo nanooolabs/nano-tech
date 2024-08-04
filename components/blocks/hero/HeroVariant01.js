@@ -6,6 +6,7 @@ import BlurryBlob from "@/components/modules/BlurryBlob";
 const HeroVariant01 = ({ data }) => {
   return (
     <Bounded
+      id={data._key}
       type={data._type}
       scopedCss={data.scoped_css}
       className="b__hero__variant01 overflow-hidden position-relative"

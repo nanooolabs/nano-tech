@@ -103,6 +103,22 @@ export const Page = {
       },
     }),
   ],
+  preview: {
+    select: {
+      title: "title",
+      slug: "slug.current",
+      featured_image: "featured_image",
+    },
+    prepare(selection) {
+      const { title, slug, featured_image } = selection;
+      console.log(selection);
+      return {
+        title,
+        subtitle: slug && (slug === "index" ? "/" : `/${slug}`),
+        media: featured_image,
+      };
+    },
+  },
 };
 
 export default Page;

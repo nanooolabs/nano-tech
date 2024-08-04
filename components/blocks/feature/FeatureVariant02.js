@@ -22,6 +22,7 @@ const cardColumns = {
 const FeatureVariant02 = ({ data }) => {
   return (
     <Bounded
+      id={data._key}
       type={data._type}
       scopedCss={data.scoped_css}
       className="b__feature__variant02 overflow-hidden position-relative"

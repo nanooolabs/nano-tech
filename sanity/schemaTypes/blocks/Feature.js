@@ -51,14 +51,14 @@ export const FeatureVariant01 = defineType({
     defineField({
       name: "label",
       title: "Label",
-      type: "text",
+      type: "string",
       initialValue: "Section Label",
       group: "content",
     }),
     defineField({
       name: "heading",
       title: "Heading",
-      type: "text",
+      type: "string",
       initialValue: "Powerful Section Heading to Insure Readability",
       group: "content",
     }),

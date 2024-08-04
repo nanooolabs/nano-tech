@@ -1,16 +1,26 @@
-import { getPage, getPages } from "@/sanity/utils/Queries";
+import PageBuilder from "@/components/wrappers/PageBuilder";
+import { getMetaData } from "@/lib/seo";
+import { getPage } from "@/sanity/utils/Queries";
+import { notFound } from "next/navigation";
 
-export default async function Home() {
-  const pages = await getPages();
+const homepagePath = "index";
+
+export default async function Page() {
+  const data = await getPage(homepagePath);
+  if (!data) {
+    return notFound();
+  }
   return (
-    <div className="container">
-      {pages.map((page) => {
-        return (
-          <div key={page._id}>
-            <h1>{page.title}</h1>
-          </div>
-        );
+    <>
+      {data?.page_builder?.map((elem) => {
+        return <PageBuilder key={elem._key} data={elem} />;
       })}
-    </div>
+    </>
   );
 }
+
+export const generateMetadata = async () => {
+  const data = await getPage(homepagePath);
+  if (!data) return {};
+  return getMetaData(data);
+};

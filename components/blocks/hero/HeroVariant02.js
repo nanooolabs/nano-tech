@@ -45,6 +45,7 @@ const Wrapper = styled.div`
 const HeroVariant02 = ({ data }) => {
   return (
     <Bounded
+      id={data._key}
       type={data._type}
       scopedCss={data.scoped_css}
       className="b__hero__variant02 overflow-hidden position-relative"

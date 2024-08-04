@@ -1,9 +1,14 @@
 import PageBuilder from "@/components/wrappers/PageBuilder";
 import { getMetaData } from "@/lib/seo";
 import { getPage } from "@/sanity/utils/Queries";
+import { notFound } from "next/navigation";
 
 export default async function Page({ params }) {
-  const data = await getPage(params.slug);
+  const slug = params.slug.join("/");
+  const data = await getPage(slug);
+  if (!data) {
+    return notFound();
+  }
   return (
     <>
       {data?.page_builder?.map((elem) => {
@@ -14,6 +19,8 @@ export default async function Page({ params }) {
 }
 
 export const generateMetadata = async ({ params }) => {
-  const data = await getPage(params.slug);
+  const slug = params.slug.join("/");
+  const data = await getPage(slug);
+  if (!data) return {};
   return getMetaData(data);
 };

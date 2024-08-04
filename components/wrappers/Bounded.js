@@ -9,9 +9,17 @@ const Section = styled.section`
     `padding: 64px 0; background-color: var(--t-cp-base-white);`}
 `;
 
-const Bounded = ({ type, className, scopedCss, children, ...restProps }) => {
+const Bounded = ({
+  type,
+  className,
+  id,
+  scopedCss,
+  children,
+  ...restProps
+}) => {
   return (
     <Section
+      id={id ? `bounded-section-id-${id}` : null}
       $scopedCss={scopedCss}
       data-block-type={parse(type)}
       className={className}
