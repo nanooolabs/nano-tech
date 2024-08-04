@@ -46,6 +46,7 @@ const Header = () => {
                 }}
                 type="button"
                 role="button"
+                aria-label="Hamburger toggler"
                 className={`c__hamburger ${
                   menuOpen ? `c__hamburger-is-active` : ``
                 }`}
