@@ -10,7 +10,7 @@ export default defineConfig({
   dataset: "production",
   basePath: "/studio",
   apiVersion: "2024-07-31",
-  useCdn: false,
+  useCdn: true,
   plugins: [structureTool(), visionTool()],
   schema: {
     types: schemaTypes,
