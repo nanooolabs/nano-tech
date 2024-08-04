@@ -8,6 +8,7 @@ import {
     SlugifierFn,
     StringOptions,
     ValidationContext,
+    defineArrayMember
   } from 'sanity';
   import slugify from 'slugify';
   
@@ -175,3 +176,23 @@ import {
     }
   };
   
+
+  export const createDocumentArray = (array: any) => {
+    return Array.isArray(array) && array.map(({ name }) =>
+      defineArrayMember({
+        name,
+        type: name,
+      })
+    );
+  }
+
+  // export const 
+
+  // export const createDocumentArray = (array: any) => {
+  //   return Array.isArray(array) && array.map(({ name }) =>
+  //     defineArrayMember({
+  //       name,
+  //       type: name,
+  //     })
+  //   );
+  // }

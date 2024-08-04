@@ -5,7 +5,7 @@ import Link from "next/link";
 // Design System
 import Button from "@/components/modules/Button";
 // Schema
-import { SCHEMA__Nav } from "@/lib/Schema";
+import { SCHEMA__Nav } from "@/lib/schema";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);

@@ -3,6 +3,19 @@ import styled from "styled-components";
 
 import React from "react";
 
+const Component = styled.div`
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  top: ${(props) => props.$top || ""};
+  left: ${(props) => props.$left || ""};
+  right: ${(props) => props.$right || ""};
+  bottom: ${(props) => props.$bottom || ""};
+  color: ${(props) => props.$color || ""};
+  opacity: ${(props) => props.$opacity || ""};
+  transform: ${(props) => props.$transform || ""};
+`;
+
 const BlurryBlob = ({
   top,
   left,
@@ -12,20 +25,16 @@ const BlurryBlob = ({
   opacity = "0.2",
   transform = `scale(1.1)`,
 }) => {
-  const Component = styled.div`
-    position: absolute;
-    width: 800px;
-    height: 800px;
-    top: ${top && top};
-    left: ${left && left};
-    right: ${right && right};
-    bottom: ${bottom && bottom};
-    color: ${color && color};
-    opacity: ${opacity && opacity};
-    transform: ${transform && transform};
-  `;
   return (
-    <Component>
+    <Component
+      $top={top}
+      $left={left}
+      $right={right}
+      $bottom={bottom}
+      $color={color}
+      $opacity={opacity}
+      $transform={transform}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"

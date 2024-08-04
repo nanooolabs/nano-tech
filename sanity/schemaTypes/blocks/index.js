@@ -1,10 +1,8 @@
-import { HeroVariant01, HeroVariant02 } from "./Hero";
+import * as AllHeroes from "./hero";
+import * as AllFeatures from "./feature";
 
-import { FeatureVariant01, FeatureVariant02 } from "./Feature";
-
-const heroBlocks = [HeroVariant01, HeroVariant02];
-const FeatureBlocks = [FeatureVariant01, FeatureVariant02];
-
+const heroBlocks = [...Object.values(AllHeroes)];
+const FeatureBlocks = [...Object.values(AllFeatures)];
 const pageBuilderBlocks = [...heroBlocks, ...FeatureBlocks];
 
 export default pageBuilderBlocks;

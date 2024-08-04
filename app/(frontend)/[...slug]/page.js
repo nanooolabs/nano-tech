@@ -1,11 +1,11 @@
 import PageBuilder from "@/components/wrappers/PageBuilder";
 import { getMetaData } from "@/lib/seo";
-import { getPage } from "@/sanity/utils/Queries";
+import { getPageBySlug } from "@/sanity/utils/queries";
 import { notFound } from "next/navigation";
 
 export default async function Page({ params }) {
   const slug = params.slug.join("/");
-  const data = await getPage(slug);
+  const data = await getPageBySlug(slug);
   if (!data) {
     return notFound();
   }
@@ -20,7 +20,7 @@ export default async function Page({ params }) {
 
 export const generateMetadata = async ({ params }) => {
   const slug = params.slug.join("/");
-  const data = await getPage(slug);
+  const data = await getPageBySlug(slug);
   if (!data) return {};
   return getMetaData(data);
 };

@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "@/styles/index.scss";
 import Layout from "@/components/wrappers/Layout";
-import StyledComponentsRegistry from "@/lib/Registry";
+import StyledComponentsRegistry from "@/lib/registry";
 import GlobalStyles from "@/styles/GlobalStyles";
 import { Inter } from "next/font/google";
 

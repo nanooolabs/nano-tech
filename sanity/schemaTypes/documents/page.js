@@ -1,6 +1,8 @@
-import { Groups } from "@/sanity/utils/Constants";
-import { isUniqueAcrossAllDocuments } from "@/sanity/utils/Helpers";
-import { defineField, defineType, defineArrayMember } from "sanity";
+import { Groups } from "@/sanity/utils/constants";
+import { isUniqueAcrossAllDocuments } from "@/sanity/utils/helpers";
+import { defineField, defineArrayMember } from "sanity";
+import { createDocumentArray } from "@/sanity/utils/helpers";
+import pageBuilderBlocks from "../blocks";
 
 export const Page = {
   name: "page",
@@ -67,36 +69,23 @@ export const Page = {
       title: "Page Builder",
       type: "array",
       group: "content",
-      of: [
-        defineArrayMember({
-          name: "HeroVariant01",
-          type: "HeroVariant01",
-        }),
-        defineArrayMember({
-          name: "HeroVariant02",
-          type: "HeroVariant02",
-        }),
-        defineArrayMember({
-          name: "FeatureVariant01",
-          type: "FeatureVariant01",
-        }),
-        defineArrayMember({
-          name: "FeatureVariant02",
-          type: "FeatureVariant02",
-        }),
-      ],
+      of: createDocumentArray(pageBuilderBlocks),
       options: {
         insertMenu: {
           groups: [
             {
               name: "hero",
               title: "Hero",
-              of: ["HeroVariant01", "HeroVariant02"],
+              of: pageBuilderBlocks
+                .filter((elem) => elem._menuCategory === "hero")
+                ?.map((elem) => elem.name),
             },
             {
               name: "feature",
               title: "Feature",
-              of: ["FeatureVariant01", "FeatureVariant02"],
+              of: pageBuilderBlocks
+                .filter((elem) => elem._menuCategory === "feature")
+                ?.map((elem) => elem.name),
             },
           ],
         },
@@ -111,7 +100,6 @@ export const Page = {
     },
     prepare(selection) {
       const { title, slug, featured_image } = selection;
-      console.log(selection);
       return {
         title,
         subtitle: slug && (slug === "index" ? "/" : `/${slug}`),
