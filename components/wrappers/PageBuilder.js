@@ -1,4 +1,5 @@
 import React from "react";
+import { stegaClean } from "@sanity/client/stega";
 import * as AllHeroes from "../blocks/hero";
 import * as AllFeatures from "../blocks/feature";
 
@@ -15,7 +16,8 @@ const BlockNotFound = ({ _type }) => {
 
 const PageBuilder = ({ data }) => {
   const { _type, block_category } = data;
-  const Comp = categories[block_category][_type] ?? BlockNotFound(_type);
+  const Comp =
+    categories[stegaClean(block_category)][_type] ?? BlockNotFound(_type);
   return (
     <>
       <Comp data={data} />

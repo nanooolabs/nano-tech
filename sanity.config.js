@@ -1,17 +1,31 @@
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
+import { presentationTool } from "sanity/presentation";
 import schemaTypes from "@/sanity/schemaTypes";
+import clientConfig from "./sanity/config/clientConfig";
+import { baseUrl } from "./lib/constants";
+import { locations } from "./sanity/utils/presentation";
 
 export default defineConfig({
   name: "default",
   title: "Mosibello Studio",
-  projectId: "nqj5p7gd",
-  dataset: "production",
   basePath: "/studio",
-  apiVersion: "2024-07-31",
-  useCdn: true,
-  plugins: [structureTool(), visionTool()],
+  ...clientConfig,
+  plugins: [
+    structureTool(),
+    presentationTool({
+      name: "editor",
+      title: "Editor",
+      previewUrl: {
+        draftMode: {
+          enable: `${baseUrl}/api/draft`,
+        },
+      },
+      resolve: { locations },
+    }),
+    visionTool(),
+  ],
   schema: {
     types: schemaTypes,
   },

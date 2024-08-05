@@ -1,8 +1,14 @@
+import { projectId } from "@/lib/constants";
+
 const clientConfig = {
-  projectId: "nqj5p7gd",
+  projectId: projectId,
   dataset: "production",
-  useCdn: true,
+  useCdn: false,
   apiVersion: "2024-07-31",
+  stega: {
+    enabled: false,
+    studioUrl: "/studio",
+  },
 };
 
 export default clientConfig;

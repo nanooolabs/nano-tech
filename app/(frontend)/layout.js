@@ -4,6 +4,7 @@ import Layout from "@/components/wrappers/Layout";
 import StyledComponentsRegistry from "@/lib/registry";
 import GlobalStyles from "@/styles/GlobalStyles";
 import { Inter } from "next/font/google";
+import VisualEditingControls from "@/components/wrappers/VisualEditingControls";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
           <GlobalStyles />
           <Layout>{children}</Layout>
         </StyledComponentsRegistry>
+        <VisualEditingControls />
       </body>
     </html>
   );

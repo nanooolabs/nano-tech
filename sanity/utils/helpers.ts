@@ -186,13 +186,5 @@ import {
     );
   }
 
-  // export const 
-
-  // export const createDocumentArray = (array: any) => {
-  //   return Array.isArray(array) && array.map(({ name }) =>
-  //     defineArrayMember({
-  //       name,
-  //       type: name,
-  //     })
-  //   );
-  // }
+  export const dev =  process.env.NODE_ENV === 'development' ||
+	process.env.ENABLE_PREVIEW === 'true'
