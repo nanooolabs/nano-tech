@@ -1,6 +1,7 @@
 import { createClient, groq } from "next-sanity";
 import clientConfig from "@/sanity/config/clientConfig";
 import { dev } from "./helpers";
+import { draftMode } from "next/headers";
 
 export async function getPageBySlug(slug) {
   const preview = dev || draftMode().isEnabled;
