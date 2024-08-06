@@ -5,7 +5,7 @@ import { draftMode } from "next/headers";
 
 export { default as groq } from "groq";
 
-export function fetchSanity(query, { params = {}, ...next } = {}) {
+export function fetchSanity(query, params, ...next) {
   const preview = dev || draftMode().isEnabled;
   return createClient(clientConfig).fetch(
     query,
