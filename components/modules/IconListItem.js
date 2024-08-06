@@ -1,7 +1,7 @@
 "use client";
 import styled from "styled-components";
 import parse from "html-react-parser";
-import { PrismicNextImage } from "@prismicio/next";
+import Image from "next/image";
 
 const Component = styled.div`
   .c__icon-list-item {
@@ -34,10 +34,17 @@ const IconListItem = ({ className, icon, heading, description }) => {
     <Component className={`c__icon-list-item ${className ? className : ``}`}>
       <div className="c__icon-list-item__wrapper">
         <div className="c__icon-list-item__column">
-          {icon && (
+          {icon && icon.src && (
             <div className="c__icon-list-item__figure-wrapper">
               <figure className="m-0">
-                <PrismicNextImage field={icon} alt={icon.alt} />
+                <Image
+                  // placeholder="blur"
+                  // blurDataURL={icon.blurDataURL}
+                  src={icon.src}
+                  alt={icon.alt ?? ""}
+                  width={500}
+                  height={500}
+                />
               </figure>
             </div>
           )}

@@ -5,6 +5,7 @@ import StyledComponentsRegistry from "@/lib/registry";
 import GlobalStyles from "@/styles/GlobalStyles";
 import { Inter } from "next/font/google";
 import VisualEditingControls from "@/components/wrappers/VisualEditingControls";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +18,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <NextTopLoader
+          color="var(--t-primary-branding-color)"
+          showSpinner={false}
+          height={2}
+        />
         <StyledComponentsRegistry>
           <GlobalStyles />
           <Layout>{children}</Layout>

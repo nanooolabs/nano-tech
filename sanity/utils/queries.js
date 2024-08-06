@@ -25,7 +25,7 @@ export async function getPageBySlug(slug) {
       },
     }
 }`,
-    { slug },
-    { tags: ["page"] }
+    { slug }
+    // { tags: ["page"] }
   );
 }

@@ -23,9 +23,10 @@ export function fetchSanity(query, params, ...next) {
         }
       : {
           perspective: "published",
-          useCdn: true,
+          useCdn: false,
           next: {
-            revalidate: 3600, // every hour
+            revalidate: 0,
+            cache: "no-store",
             ...next,
           },
         }
