@@ -6,6 +6,7 @@ import schemaTypes from "@/sanity/schemaTypes";
 import clientConfig from "./sanity/config/clientConfig";
 import { baseUrl } from "./lib/constants";
 import { locations } from "./sanity/utils/presentation";
+import { codeInput } from "@sanity/code-input";
 
 export default defineConfig({
   name: "default",
@@ -25,6 +26,7 @@ export default defineConfig({
       resolve: { locations },
     }),
     visionTool(),
+    codeInput(),
   ],
   schema: {
     types: schemaTypes,

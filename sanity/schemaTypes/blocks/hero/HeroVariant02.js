@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { scopedCss } from "../defaultFields";
 const blockCategory = "hero";
 const HeroVariant02 = defineType({
   name: "HeroVariant02",
@@ -24,14 +25,7 @@ const HeroVariant02 = defineType({
       readOnly: true,
       hidden: true,
     }),
-    defineField({
-      name: "scoped_css",
-      title: "Scoped CSS",
-      type: "text",
-      rows: 4,
-      group: "style",
-      initialValue: `padding: 64px 0;`,
-    }),
+    defineField(scopedCss),
     defineField({
       name: "enable_blobs",
       title: "Enable Blobs",

@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { scopedCss } from "../defaultFields";
 const blockCategory = "feature";
 const FeatureVariant03 = defineType({
   name: "FeatureVariant03",
@@ -16,14 +17,7 @@ const FeatureVariant03 = defineType({
     },
   ],
   fields: [
-    defineField({
-      name: "scoped_css",
-      title: "Scoped CSS",
-      type: "text",
-      rows: 4,
-      group: "style",
-      initialValue: `padding: 64px 0;`,
-    }),
+    defineField(scopedCss),
     defineField({
       name: "block_category",
       title: "Block Category",
