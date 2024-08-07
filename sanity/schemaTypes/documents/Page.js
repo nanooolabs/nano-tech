@@ -87,6 +87,20 @@ export const Page = {
                 .filter((elem) => elem._menuCategory === "feature")
                 ?.map((elem) => elem.name),
             },
+            {
+              name: "content",
+              title: "Content",
+              of: pageBuilderBlocks
+                .filter((elem) => elem._menuCategory === "content")
+                ?.map((elem) => elem.name),
+            },
+            {
+              name: "faq",
+              title: "FAQs",
+              of: pageBuilderBlocks
+                .filter((elem) => elem._menuCategory === "faq")
+                ?.map((elem) => elem.name),
+            },
           ],
         },
       },

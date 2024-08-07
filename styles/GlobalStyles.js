@@ -4,6 +4,23 @@ import Theme from "./Theme";
 import Utils from "./Utils";
 
 const Styles = css`
+  //## Custom Fonts
+  /* @font-face {
+    font-family: "Mulish";
+    src: url("/fonts/bettersans-regular.woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  } */
+  @font-face {
+    font-family: "Pacaembu";
+    src: url("/fonts/Pacaembu.woff2");
+    font-style: bold;
+    font-weight: 100 700;
+    font-display: swap;
+  }
+  // ## End base
+
   // ## Base
   html {
     font-size: 16px;
@@ -22,6 +39,7 @@ const Styles = css`
     font-weight: 400;
     color: var(--t-body-color);
     line-height: var(--t-body-line-height);
+    letter-spacing: var(--t-body-letter-spacing);
     font-size: 16px;
   }
 
@@ -55,36 +73,38 @@ const Styles = css`
     color: var(--t-heading-color);
     font-weight: var(--t-font-weight-heading);
     font-family: var(--t-font-family-heading);
+    letter-spacing: var(--t-heading-letter-spacing);
+    line-height: var(--t-heading-line-height);
   }
 
   h1,
   .h1 {
-    font-size: 50px;
+    font-size: var(--t-font-size-h1);
   }
 
   h2,
   .h2 {
-    font-size: 40px;
+    font-size: var(--t-font-size-h2);
   }
 
   h3,
   .h3 {
-    font-size: 32px;
+    font-size: var(--t-font-size-h3);
   }
 
   h4,
   .h4 {
-    font-size: 28px;
+    font-size: var(--t-font-size-h4);
   }
 
   h5,
   .h5 {
-    font-size: 24px;
+    font-size: var(--t-font-size-h5);
   }
 
   h6,
   .h6 {
-    font-size: 20px;
+    font-size: var(--t-font-size-h6);
   }
 
   a {

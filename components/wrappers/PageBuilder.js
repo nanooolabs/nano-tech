@@ -2,10 +2,14 @@ import React from "react";
 import { stegaClean } from "@sanity/client/stega";
 import * as AllHeroes from "../blocks/hero";
 import * as AllFeatures from "../blocks/feature";
+import * as AllContents from "../blocks/content";
+import * as AllFaqs from "../blocks/faq";
 
 const categories = {
   hero: AllHeroes,
   feature: AllFeatures,
+  content: AllContents,
+  faq: AllFaqs,
 };
 
 const BlockNotFound = ({ _type }) => {

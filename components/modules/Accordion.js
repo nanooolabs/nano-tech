@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import parse from "html-react-parser";
-import { PrismicRichText } from "@prismicio/react";
+import { PortableText } from "@portabletext/react";
 
 const Component = styled.div`
   border-bottom: none;
@@ -149,7 +149,7 @@ const Accordion = ({ index, heading, content, borderBottom = true }) => {
           style={{ display: "none" }}
         >
           <div className="c__richtext-field">
-            <PrismicRichText field={content} />
+            <PortableText value={content} />
           </div>
         </div>
       )}

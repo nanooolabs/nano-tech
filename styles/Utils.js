@@ -143,6 +143,14 @@ const Utils = css`
         }
       }
     }
+    &__font-family {
+      &-heading {
+        font-family: var(--t-font-family-heading);
+      }
+      &-body {
+        font-family: var(--t-font-family-body);
+      }
+    }
     &__heading-color {
       color: var(--t-heading-color);
     }
@@ -155,41 +163,41 @@ const Utils = css`
     &__d1 {
       font-size: 50px;
       @media (min-width: 1200px) {
-        font-size: 72px;
+        font-size: var(--t-font-size-d1);
       }
     }
     &__d2 {
       font-size: 45px;
       @media (min-width: 1200px) {
-        font-size: 60px;
+        font-size: var(--t-font-size-d2);
       }
     }
     &__h1 {
-      font-size: 50px;
+      font-size: var(--t-font-size-h1);
     }
     &__h2 {
-      font-size: 40px;
+      font-size: var(--t-font-size-h2);
     }
     &__h3 {
-      font-size: 32px;
+      font-size: var(--t-font-size-h3);
     }
     &__h4 {
-      font-size: 28px;
+      font-size: var(--t-font-size-h4);
     }
     &__h5 {
-      font-size: 24px;
+      font-size: var(--t-font-size-h5);
     }
     &__h6 {
-      font-size: 20px;
+      font-size: var(--t-font-size-h6);
     }
     &__subtitle {
-      font-size: 18px;
+      font-size: var(--t-font-size-subtitle);
     }
     &__p {
-      font-size: 16px;
+      font-size: var(--t-font-size-body);
     }
     &__small {
-      font-size: 14px;
+      font-size: var(--t-font-size-small);
     }
     &__inherited-anchor {
       color: inherit;

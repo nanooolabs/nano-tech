@@ -4,6 +4,7 @@
     border-radius: var(--t-button-border-radius);
     &__content {
       font-weight: var(--t-font-weight-button);
+      font-family: var(--t-font-family-button);
     }
     &__size {
       &--default {

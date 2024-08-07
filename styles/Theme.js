@@ -11,16 +11,33 @@ const Theme = css`
     --t-button-padding: 0.7rem 1.6rem;
     --t-button-border-radius: 8px;
     // Typography
-    --t-heading-color: #242424;
-    --t-body-color: #242424;
+    --t-heading-color: #291643;
+    --t-body-color: #291643;
     --t-anchor-color: var(--t-primary-branding-color);
     --t-anchor-hover-color: var(--t-primary-branding-hover-color);
     --t-heading-line-height: 1.3;
-    --t-body-line-height: 1.6;
-    --t-font-family-heading: "Inter", sans-serif;
-    --t-font-family-body: "Inter", sans-serif;
+    --t-heading-letter-spacing: 0px;
+    --t-body-line-height: 1.5;
+    --t-body-letter-spacing: 0px;
+    --t-font-family-system: system-ui, -apple-system, BlinkMacSystemFont,
+      “Segoe UI”, Roboto, Oxygen-Sans, Ubuntu, Cantarell, “Helvetica Neue”,
+      Arial, sans-serif;
+    --t-font-family-heading: "Pacaembu", var(--t-font-family-system);
+    --t-font-family-body: "Pacaembu", var(--t-font-family-system);
     --t-font-weight-heading: 700;
     --t-font-weight-button: 700;
+    --t-font-family-button: var(--t-font-family-heading);
+    --t-font-size-d1: 72px;
+    --t-font-size-d2: 60px;
+    --t-font-size-h1: 50px;
+    --t-font-size-h2: 40px;
+    --t-font-size-h3: 32px;
+    --t-font-size-h4: 28px;
+    --t-font-size-h5: 24px;
+    --t-font-size-h6: 20px;
+    --t-font-size-subtitle: 18px;
+    --t-font-size-body: 16px;
+    --t-font-size-small: 14px;
     // Form
     --t-form-title-color: var(--t-primary-branding-color);
     --t-form-label-color: #25282a;
@@ -44,7 +61,7 @@ const Theme = css`
     --t-box-shadow-3xl: 0px 32px 64px -12px rgba(16, 24, 40, 0.14);
     // Misc
     --t-border-color: #eee;
-    --t-light-background-color: #f7f9ff;
+    --t-light-background-color: #fcf9ff;
     --t-global-card-border-radius: 16px;
     --t-global-image-border-radius: 16px;
     // Blobs
