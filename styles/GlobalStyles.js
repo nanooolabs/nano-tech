@@ -6,19 +6,12 @@ import Utils from "./Utils";
 const Styles = css`
   //## Custom Fonts
   /* @font-face {
-    font-family: "Mulish";
-    src: url("/fonts/bettersans-regular.woff2");
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-  } */
-  @font-face {
     font-family: "Pacaembu";
     src: url("/fonts/Pacaembu.woff2");
     font-style: bold;
     font-weight: 100 700;
     font-display: swap;
-  }
+  } */
   // ## End base
 
   // ## Base

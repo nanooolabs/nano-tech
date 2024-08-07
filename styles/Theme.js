@@ -22,8 +22,8 @@ const Theme = css`
     --t-font-family-system: system-ui, -apple-system, BlinkMacSystemFont,
       “Segoe UI”, Roboto, Oxygen-Sans, Ubuntu, Cantarell, “Helvetica Neue”,
       Arial, sans-serif;
-    --t-font-family-heading: "Pacaembu", var(--t-font-family-system);
-    --t-font-family-body: "Pacaembu", var(--t-font-family-system);
+    --t-font-family-heading: "__customFont_a8cd55", var(--t-font-family-system);
+    --t-font-family-body: "__customFont_a8cd55", var(--t-font-family-system);
     --t-font-weight-heading: 700;
     --t-font-weight-button: 700;
     --t-font-family-button: var(--t-font-family-heading);
