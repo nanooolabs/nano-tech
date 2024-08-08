@@ -16,8 +16,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        data-vercel-url={NEXT_PUBLIC_VERCEL_URL}
-        data-vercel-prod-url={NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}
+        data-vercel-url={process.env.NEXT_PUBLIC_VERCEL_URL}
+        data-vercel-prod-url={
+          process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
+        }
         className={customFont.variable}
       >
         <NextTopLoader
