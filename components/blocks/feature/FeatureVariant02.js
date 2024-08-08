@@ -4,6 +4,7 @@ import Bounded from "@/components/wrappers/Bounded";
 import styled from "styled-components";
 import IconCard from "@/components/modules/IconCard";
 import urlFor from "@/lib/imageUrlBuilder";
+import { stegaClean } from "@sanity/client/stega";
 
 const Wrapper = styled.div`
   .b__feature__variant02 {
@@ -47,7 +48,7 @@ const FeatureVariant02 = ({ data }) => {
         {data.repeater && (
           <div className="container position-relatie u__z-index-1 mt-4 pt-4">
             <div
-              className={`row b__feature__variant02__row justify-content-${data.justify_content}`}
+              className={`row b__feature__variant02__row justify-content-${stegaClean(data.justify_content)}`}
             >
               {data.repeater.map((elem, index) => {
                 const {
