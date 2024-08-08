@@ -9,12 +9,13 @@ import localFont from "next/font/local";
 
 export const customFont = localFont({
   src: "../../public/fonts/Pacaembu.woff2",
+  variable: "--t-font-family-global",
 });
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={customFont.className}>
+      <body className={customFont.variable}>
         <NextTopLoader
           color="var(--t-primary-branding-color)"
           showSpinner={false}

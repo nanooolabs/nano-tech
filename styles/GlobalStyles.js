@@ -31,8 +31,9 @@ const Styles = css`
     font-family: var(--t-font-family-body);
     font-weight: 400;
     color: var(--t-body-color);
-    line-height: var(--t-body-line-height);
+    line-height: var(--t-line-height-body);
     letter-spacing: var(--t-body-letter-spacing);
+    font-synthesis: none !important;
     font-size: 16px;
   }
 
@@ -67,37 +68,42 @@ const Styles = css`
     font-weight: var(--t-font-weight-heading);
     font-family: var(--t-font-family-heading);
     letter-spacing: var(--t-heading-letter-spacing);
-    line-height: var(--t-heading-line-height);
   }
 
   h1,
   .h1 {
     font-size: var(--t-font-size-h1);
+    line-height: var(--t-line-height-h1);
   }
 
   h2,
   .h2 {
     font-size: var(--t-font-size-h2);
+    line-height: var(--t-line-height-h2);
   }
 
   h3,
   .h3 {
     font-size: var(--t-font-size-h3);
+    line-height: var(--t-line-height-h3);
   }
 
   h4,
   .h4 {
     font-size: var(--t-font-size-h4);
+    line-height: var(--t-line-height-h4);
   }
 
   h5,
   .h5 {
     font-size: var(--t-font-size-h5);
+    line-height: var(--t-line-height-h5);
   }
 
   h6,
   .h6 {
     font-size: var(--t-font-size-h6);
+    line-height: var(--t-line-height-h6);
   }
 
   a {

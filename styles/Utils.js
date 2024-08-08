@@ -161,43 +161,48 @@ const Utils = css`
       color: var(--t-anchor-color);
     }
     &__d1 {
-      font-size: 50px;
-      @media (min-width: 1200px) {
-        font-size: var(--t-font-size-d1);
-      }
+      font-size: var(--t-font-size-d1);
+      line-height: var(--t-line-height-d1);
     }
     &__d2 {
-      font-size: 45px;
-      @media (min-width: 1200px) {
-        font-size: var(--t-font-size-d2);
-      }
+      font-size: var(--t-font-size-d2);
+      line-height: var(--t-line-height-d2);
     }
     &__h1 {
       font-size: var(--t-font-size-h1);
+      line-height: var(--t-line-height-h1);
     }
     &__h2 {
       font-size: var(--t-font-size-h2);
+      line-height: var(--t-line-height-h2);
     }
     &__h3 {
       font-size: var(--t-font-size-h3);
+      line-height: var(--t-line-height-h3);
     }
     &__h4 {
       font-size: var(--t-font-size-h4);
+      line-height: var(--t-line-height-h4);
     }
     &__h5 {
       font-size: var(--t-font-size-h5);
+      line-height: var(--t-line-height-h5);
     }
     &__h6 {
       font-size: var(--t-font-size-h6);
+      line-height: var(--t-line-height-h6);
     }
     &__subtitle {
       font-size: var(--t-font-size-subtitle);
+      line-height: var(--t-line-height-subtitle);
     }
     &__p {
       font-size: var(--t-font-size-body);
+      line-height: var(--t-line-height-body);
     }
     &__small {
       font-size: var(--t-font-size-small);
+      line-height: var(--t-line-height-small);
     }
     &__inherited-anchor {
       color: inherit;
