@@ -21,7 +21,7 @@ const Bounded = ({
     <Section
       id={id ? `bounded-section-id-${id}` : null}
       $scopedCss={scopedCss ? scopedCss?.code : null}
-      data-block-type={parse(type)}
+      data-block-type={type && parse(type)}
       className={className}
       {...restProps}
     >

@@ -48,7 +48,7 @@ const HeroVariant01 = ({ data }) => {
           {data.button_title && (
             <div className="c__button-wrapper mt-4 pt-3">
               <Button
-                destination={data.button_destination}
+                destination={data?.button_destination}
                 title={data.button_title}
               />
             </div>

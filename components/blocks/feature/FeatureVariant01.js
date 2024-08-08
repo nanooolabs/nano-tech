@@ -58,7 +58,7 @@ const FeatureVariant01 = ({ data }) => {
           >
             {data.label && (
               <div>
-                <span className="u__subtitle d-block mb-2 u__f-500 u__text-branding-primary">
+                <span className="u__subtitle d-block mb-2 u__f-500 u__text-branding-primary u__font-family-heading">
                   {parse(data.label)}
                 </span>
               </div>
@@ -74,12 +74,14 @@ const FeatureVariant01 = ({ data }) => {
               </div>
             )}
 
-            <div className="c__button-wrapper mt-4 pt-3">
-              <Button
-                destination={data.button_destination}
-                title={data.button_title}
-              />
-            </div>
+            {data.button_title && (
+              <div className="c__button-wrapper mt-4 pt-3">
+                <Button
+                  destination={data?.button_destination}
+                  title={data.button_title}
+                />
+              </div>
+            )}
           </div>
           <div
             className={`col-lg-6 ${data.invert_order ? `order-lg-1` : `order-lg-2`}`}
