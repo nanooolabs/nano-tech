@@ -44,7 +44,7 @@ const ContentVariant02 = ({ data }) => {
             </div>
           </div>
           {data.content && (
-            <div className="col-lg-6 ps-lg-5 mt-4 mt-lg-0">
+            <div className="col-lg-6 ps-lg-5 mt-5 mt-lg-0">
               <div className="c__richtext-field u__subtitle">
                 <PortableText
                   value={data.content}
