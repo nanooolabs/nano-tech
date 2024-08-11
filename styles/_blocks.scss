@@ -14,8 +14,15 @@
     &__header01 {
       color: var(--t-heading-color);
       padding: 1rem 0;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid var(--t-border-color);
       box-shadow: 15px 5px 40px rgb(209 213 219 / 15%);
+      position: relative;
+      &--sticky {
+        position: sticky;
+        top: 0;
+        z-index: 99999;
+        background-color: var(--t-cp-base-white);
+      }
       &__wrapper {
         display: flex;
         align-items: center;
@@ -37,7 +44,18 @@
         font-size: 0.9rem;
         font-weight: 600;
         &-small {
-          padding: 2rem 1.3rem;
+          display: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          width: 100%;
+          &--active {
+            display: block;
+            @media (min-width: 992px) {
+              display: none !important;
+            }
+          }
           .b__header__header01__nav {
             display: block;
           }
@@ -99,7 +117,24 @@
           }
         }
       }
+      &__navigation-board {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        top: 70px;
+        background-color: var(--t-cp-base-white);
+        padding: 1rem;
+        z-index: 9999;
+        max-height: calc(100vh - 60px);
+        overflow-y: scroll;
+        border-top: 1px solid var(--t-border-color);
+        border-bottom: 1px solid var(--t-border-color);
+        padding-bottom: 2rem;
+        @media (min-width: 768px) {
+          padding-left: 1.875rem;
+          padding-right: 1.875rem;
+        }
+      }
     }
   }
-  // New block styles here
 }

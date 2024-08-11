@@ -24,6 +24,7 @@ export default function RootLayout({ children }) {
           color="var(--t-primary-branding-color)"
           showSpinner={false}
           height={2}
+          zIndex={999999}
         />
         <StyledComponentsRegistry>
           <GlobalStyles />

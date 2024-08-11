@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 // Design System
 import Button from "@/components/modules/Button";
 // Schema
@@ -9,10 +10,14 @@ import { SCHEMA__Nav } from "@/lib/schema";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   return (
     <>
-      <header className="b__header__header01">
+      <header className="b__header__header01 b__header__header01--sticky">
         <div className="container">
           <div className="b__header__header01__wrapper">
             <Link
@@ -48,7 +53,7 @@ const Header = () => {
                 role="button"
                 aria-label="Hamburger toggler"
                 className={`c__hamburger ${
-                  menuOpen ? `c__hamburger-is-active` : ``
+                  menuOpen ? `c__hamburger--active` : ``
                 }`}
               >
                 <span className="c__hamburger__line c__hamburger__line-top"></span>
@@ -57,16 +62,9 @@ const Header = () => {
               </button>
             </div>
             <div
-              className={`c__drawer c__drawer-nav ${
-                menuOpen ? `c__drawer-is-active` : ``
-              }`}
+              className={`b__header__header01__nav-wrapper b__header__header01__nav-wrapper-small ${menuOpen ? `b__header__header01__nav-wrapper-small--active` : ``}`}
             >
-              <div className="c__drawer__header-wrapper">
-                <span className="u__f-900 py-2 u__br-4 u__h4 u__heading-color--primary u__letter-spacing--tight">
-                  Mosibello
-                </span>
-              </div>
-              <div className="b__header__header01__nav-wrapper b__header__header01__nav-wrapper-small">
+              <div className={`b__header__header01__navigation-board`}>
                 <nav className="b__header__header01__nav">
                   <ul>
                     {SCHEMA__Nav.map((elem, index) => {
@@ -85,14 +83,6 @@ const Header = () => {
                 </nav>
               </div>
             </div>
-            <div
-              onClick={() => {
-                setMenuOpen(false);
-              }}
-              className={`c__drawer-tint ${
-                menuOpen ? `c__drawer-tint-is-active` : ``
-              }`}
-            ></div>
           </div>
         </div>
       </header>

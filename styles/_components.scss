@@ -129,13 +129,16 @@
     transform: none;
     position: relative;
     width: 24px;
-    height: 18px;
+    height: 16px;
     cursor: pointer;
     z-index: 1001;
+    &:focus {
+      outline: -webkit-focus-ring-color auto 1px;
+    }
     &__line {
       display: block;
       width: 25px;
-      height: 4px;
+      height: 2px;
       background-color: var(--t-primary-branding-color);
       position: absolute;
       left: 50%;
@@ -143,7 +146,6 @@
       border-radius: 10px;
       transform-origin: 50% 50%;
       margin-top: -1px;
-      transition: all 0.2s ease;
       &-top {
         top: 0;
       }
@@ -154,82 +156,17 @@
         top: 100%;
       }
     }
-    &-is-active {
-      height: 13px;
-      position: fixed;
-      right: 15px;
-      top: 27px;
+    &--active {
       .c__hamburger__line-top {
         transform: translateX(-50%) rotate(45deg);
-        top: 5px;
+        top: 9px;
       }
       .c__hamburger__line-middle {
         opacity: 0;
       }
       .c__hamburger__line-bottom {
         transform: translateX(-50%) rotate(-45deg);
-        top: 5px;
-      }
-    }
-  }
-  &__drawer {
-    &-nav {
-      @media (min-width: 992px) {
-        display: none;
-      }
-    }
-    display: block;
-    pointer-events: none;
-    position: fixed;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    z-index: 1000;
-    top: 0;
-    bottom: 0;
-    width: 18.75em;
-    max-width: 100%;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    background-color: #f8f8f8;
-    right: 0;
-    transform: translateX(100%);
-    &__header-wrapper {
-      padding: 1rem 1.3rem;
-      text-align: left;
-      background-color: #fff;
-    }
-    &-is-active {
-      pointer-events: all;
-      transform: translateX(0);
-    }
-  }
-  &__drawer-tint {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    position: fixed;
-    transform: translateZ(0);
-    z-index: 999;
-    transition:
-      visibility 0.4s linear,
-      opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
-    &-is-active {
-      visibility: visible;
-      opacity: 1;
-      pointer-events: all;
-      @media (min-width: 992px) {
-        visibility: hidden;
-        opacity: 0;
-        pointer-events: none;
-        display: none;
+        top: 9px;
       }
     }
   }
