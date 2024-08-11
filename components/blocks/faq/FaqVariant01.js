@@ -39,7 +39,7 @@ const FaqVariant01 = ({ data }) => {
           </div>
         </div>
         {data.repeater && (
-          <div className="container mt-4 pt-4">
+          <div className="container mt-4 pt-4 pt-lg-5">
             <div className="b__faq__variant01__list-wrapper mx-auto">
               {data.repeater.map((elem, index) => {
                 return (

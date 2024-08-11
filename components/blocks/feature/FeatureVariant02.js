@@ -46,7 +46,7 @@ const FeatureVariant02 = ({ data }) => {
           </div>
         </div>
         {data.repeater && (
-          <div className="container position-relatie u__z-index-1 mt-4 pt-4">
+          <div className="container position-relatie u__z-index-1 mt-4 pt-4 pt-lg-5">
             <div
               className={`row b__feature__variant02__row justify-content-${stegaClean(data.justify_content)}`}
             >

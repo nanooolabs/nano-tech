@@ -416,7 +416,13 @@ const Utils = css`
     // ## Backgrounds
     &__background {
       &-light {
-        background-color: var(--t-light-background-color);
+        background-color: var(--t-light-background-color) !important;
+      }
+      &-primary {
+        background-color: var(--t-primary-branding-color) !important;
+      }
+      &-secondary {
+        background-color: var(--t-secondary-branding-color) !important;
       }
     }
     // ## End Backgrounds
