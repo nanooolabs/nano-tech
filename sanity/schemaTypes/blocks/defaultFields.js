@@ -14,7 +14,7 @@ export const generateHeadingTagField = (name, title) => {
     name,
     title,
     type: "string",
-    initialValue: "primary",
+    initialValue: "h2",
     group: "content",
     options: {
       list: [

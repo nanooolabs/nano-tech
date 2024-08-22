@@ -14,6 +14,7 @@ const Component = styled.div`
   color: ${(props) => props.$color || ""};
   opacity: ${(props) => props.$opacity || ""};
   transform: ${(props) => props.$transform || ""};
+  z-index: ${(props) => props.$zIndex || ""};
 `;
 
 const BlurryBlob = ({
@@ -24,6 +25,7 @@ const BlurryBlob = ({
   color = `var(--t-blob-color-1)`,
   opacity = "0.2",
   transform = `scale(1.1)`,
+  zIndex,
 }) => {
   return (
     <Component
@@ -34,6 +36,7 @@ const BlurryBlob = ({
       $color={color}
       $opacity={opacity}
       $transform={transform}
+      $zIndex={zIndex}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

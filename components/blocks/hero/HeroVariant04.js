@@ -1,11 +1,11 @@
 "use client";
 import Button from "@/components/modules/Button";
-import parse from "html-react-parser";
 import Bounded from "@/components/wrappers/Bounded";
 import styled from "styled-components";
 import BlurryBlob from "@/components/modules/BlurryBlob";
 import Pill from "@/components/modules/Pill";
 import Image from "next/image";
+import parse from "html-react-parser";
 import urlFor from "@/lib/imageUrlBuilder";
 import Heading from "@/components/modules/Heading";
 
@@ -46,6 +46,9 @@ const Wrapper = styled.div`
       object-fit: cover;
       width: 100%;
       height: 100%;
+      @media (max-width: 992px) {
+        z-index: 2;
+      }
       &-wrapper {
         height: 400px;
         position: relative;
@@ -68,7 +71,7 @@ const Wrapper = styled.div`
           left: -5rem;
           bottom: -10%;
           width: 130px;
-          height: 110%;
+          height: 130%;
           background-color: var(--t-cp-base-white);
           transform: rotate(8deg);
           z-index: 1;
@@ -89,12 +92,13 @@ const HeroVariant04 = ({ data }) => {
     >
       {data?.enable_blobs && (
         <>
-          <BlurryBlob top="-20rem" left="-20rem" />
           <BlurryBlob
-            bottom="-20rem"
-            right="0rem"
+            top="-20rem"
+            left="-20rem"
             color="var(--t-blob-color-2)"
+            zIndex="2"
           />
+          <BlurryBlob bottom="-20rem" left="0rem" zIndex="2" />
         </>
       )}
       <Wrapper>
@@ -102,56 +106,45 @@ const HeroVariant04 = ({ data }) => {
           <div className="row b__hero__variant04__row">
             <div className="col-lg-6 b__hero__variant04__col--content">
               <div className="b__hero__variant04__content-wrapper">
-                {/* {data.label && <Pill title={data.label} />} */}
-                <Pill title="Section Label" />
-                <div className="c__heading-wrapper">
-                  <Heading tag={`h1`} className="u__d2">
-                    Data to enrich your online business
-                  </Heading>
-                </div>
-                <div className="c__description-wrapper">
-                  <p>
-                    Gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-                    amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-                    elitr.
-                  </p>
-                </div>
+                {data.label && <Pill title={data.label} />}
+                {data.heading && (
+                  <div className="c__heading-wrapper">
+                    <Heading tag={data.heading_tag} className="u__d2">
+                      {data.heading}
+                    </Heading>
+                  </div>
+                )}
+                {data.description && (
+                  <div className="c__description-wrapper">
+                    <p>{parse(data.description)}</p>
+                  </div>
+                )}
                 <div className="c__button-wrapper mt-4 pt-3">
                   <Button
                     destination={data?.button_destination}
-                    title={
-                      data?.button_title ? data.button_title : `Learn More`
-                    }
+                    title={data.button_title}
+                    theme={data.button_theme}
                   />
                 </div>
               </div>
             </div>
             <div className="col-lg-6 b__hero__variant04__col--image">
-              <div className="b__hero__variant04__image-wrapper">
-                <div className="b__hero__variant04__image-shape"></div>
-                {/* <img
-                  className="b__hero__variant04__image"
-                  src="https://ik.imagekit.io/h7jkr1dmtk/tr:w-2000/photo-1498758536662-35b82cd15e29.avif"
-                /> */}
-                <Image
-                  className="b__hero__variant04__image"
-                  fill={true}
-                  // placeholder="blur"
-                  // blurDataURL={data.image.asset.metadata.lqip}
-                  src={`https://ik.imagekit.io/h7jkr1dmtk/tr:w-2000/priscilla-du-preez-XkKCui44iM0-unsplash.jpg`}
-                  alt={``}
-                  sizes="100%"
-                />
-                {/* <Image
-                    className="b__hero__variant02__image"
+              {data.image && (
+                <div className="b__hero__variant04__image-wrapper">
+                  {data.enable_image_shape && (
+                    <div className="b__hero__variant04__image-shape"></div>
+                  )}
+                  <Image
+                    className="b__hero__variant04__image"
                     fill={true}
                     placeholder="blur"
-                    blurDataURL={data.image.asset.metadata.lqip}
+                    blurDataURL={data.image.asset?.metadata?.lqip}
                     src={urlFor(data.image).url()}
                     alt={data.image.alt ?? ""}
                     sizes="100%"
-                  /> */}
-              </div>
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
