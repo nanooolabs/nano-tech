@@ -86,6 +86,12 @@ const Header = () => {
           </div>
         </div>
       </header>
+      <div
+        onClick={() => {
+          setMenuOpen(false);
+        }}
+        className={`b__header__header01__navigation-board__tint ${menuOpen ? `b__header__header01__navigation-board__tint--active` : ``}`}
+      ></div>
     </>
   );
 };
