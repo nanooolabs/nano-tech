@@ -2,7 +2,7 @@ import { DocumentLocationResolver } from 'sanity/presentation'
 import { map } from 'rxjs'
 
 export const locations: DocumentLocationResolver = (params, context) => {
-	if (['page', 'blog.post'].includes(params.type)) {
+	if (['page', 'post'].includes(params.type)) {
 		const doc$ = context.documentStore.listenQuery(
 			`*[_id == $id][0]{title,slug}`,
 			params,
@@ -13,7 +13,7 @@ export const locations: DocumentLocationResolver = (params, context) => {
 			map((doc) => {
 				if (!doc?.slug?.current) return null
 
-				const directory = params.type === 'blog.post' ? '/blog' : ''
+				const directory = params.type === 'post' ? '/blog' : ''
 				const slug = doc.slug.current
 				const path = slug === 'index' ? '' : `/${slug}`
 
