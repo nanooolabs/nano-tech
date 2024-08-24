@@ -22,7 +22,7 @@ const PortableTextComponents = {
                   alt={value.alt ?? ""}
                   sizes="100vw"
                   width={500}
-                  height={2000}
+                  height={400}
                 />
               </div>
             </>
