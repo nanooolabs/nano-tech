@@ -41,7 +41,7 @@ const Header = () => {
                     );
                   })}
                 </ul>
-                <Button title={`Get a Free Quote`} destination={``} />
+                <Button title={`Get Started`} destination={``} />
               </nav>
             </div>
             <div className="b__header__header01__hamburger-wrapper">
@@ -77,7 +77,7 @@ const Header = () => {
                   </ul>
                   <Button
                     className="text-center mt-3 w-100"
-                    title={`Get a Free Quote`}
+                    title={`Get Started`}
                     destination={``}
                   />
                 </nav>

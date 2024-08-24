@@ -1,7 +1,4 @@
-import { createClient, groq } from "next-sanity";
-import clientConfig from "@/sanity/config/clientConfig";
-import { dev } from "./helpers";
-import { draftMode } from "next/headers";
+import { groq } from "next-sanity";
 import { fetchSanity } from "./fetch";
 
 export async function getPageBySlug(slug) {
@@ -27,5 +24,27 @@ export async function getPageBySlug(slug) {
 }`,
     { slug },
     { tags: ["page"] }
+  );
+}
+
+export async function getPostBySlug(slug) {
+  return fetchSanity(
+    groq`*[_type == "post" && slug.current == $slug][0]{
+      ...,
+      content[]{
+        ...,
+        _type == "image" => {
+          ...,
+          asset->
+        }
+      },
+      featured_image {
+        ... {
+          asset->
+        }
+      }
+    }`,
+    { slug },
+    { tags: ["post"] }
   );
 }

@@ -6,7 +6,7 @@ import pageBuilderBlocks from "../blocks";
 
 export const Post = {
   name: "post",
-  title: "Post",
+  title: "Posts",
   type: "document",
   groups: Groups,
   fields: [
@@ -65,7 +65,7 @@ export const Post = {
       ],
     },
     defineField({
-      name: "publishDate",
+      name: "publish_date",
       type: "date",
       validation: (Rule) => Rule.required(),
       group: "content",
@@ -81,8 +81,6 @@ export const Post = {
       name: "content",
       title: "Content",
       type: "array",
-      initialValue:
-        "Gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet",
       of: [
         {
           type: "block",
@@ -100,50 +98,16 @@ export const Post = {
             },
           ],
         },
+        {
+          type: "code",
+          options: {
+            language: "html",
+            languageAlternatives: [{ title: "HTML", value: "html" }],
+          },
+        },
       ],
       group: "content",
     }),
-    // defineField({
-    //   name: "page_builder",
-    //   title: "Page Builder",
-    //   type: "array",
-    //   group: "content",
-    //   of: createDocumentArray(pageBuilderBlocks),
-    //   options: {
-    //     insertMenu: {
-    //       groups: [
-    //         {
-    //           name: "hero",
-    //           title: "Hero",
-    //           of: pageBuilderBlocks
-    //             .filter((elem) => elem._menuCategory === "hero")
-    //             ?.map((elem) => elem.name),
-    //         },
-    //         {
-    //           name: "feature",
-    //           title: "Feature",
-    //           of: pageBuilderBlocks
-    //             .filter((elem) => elem._menuCategory === "feature")
-    //             ?.map((elem) => elem.name),
-    //         },
-    //         {
-    //           name: "content",
-    //           title: "Content",
-    //           of: pageBuilderBlocks
-    //             .filter((elem) => elem._menuCategory === "content")
-    //             ?.map((elem) => elem.name),
-    //         },
-    //         {
-    //           name: "faq",
-    //           title: "FAQs",
-    //           of: pageBuilderBlocks
-    //             .filter((elem) => elem._menuCategory === "faq")
-    //             ?.map((elem) => elem.name),
-    //         },
-    //       ],
-    //     },
-    //   },
-    // }),
   ],
   preview: {
     select: {
