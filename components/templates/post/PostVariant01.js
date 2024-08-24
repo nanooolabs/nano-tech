@@ -50,7 +50,7 @@ const PostVariant01 = ({ data }) => {
                 Personal Finance
               </Link> */}
               {data.title || data.heading ? (
-                <Heading>
+                <Heading tag="h1">
                   {stegaClean(data.heading) ? data.heading : data.title}
                 </Heading>
               ) : (
