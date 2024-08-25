@@ -39,5 +39,5 @@ export const generateMetadata = async () => {
   };
   const data = await getPosts(0, paginatedItemsPerPage);
   if (!data) return {};
-  return getMetaData(staticMetaData, `blog`);
+  return getMetaData(staticMetaData, `blog`, null, `blog/page/2`);
 };
