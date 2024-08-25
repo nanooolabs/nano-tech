@@ -65,3 +65,7 @@ export async function getPosts(start, end) {
     { tags: ["post"] }
   );
 }
+
+export async function getPostsCount() {
+  return fetchSanity(groq`count(*[_type == "post" && ${QUERY_omitDrafts}])`);
+}
