@@ -8,3 +8,5 @@ export const Groups = [
     title: "Content",
   },
 ];
+
+export const QUERY_omitDrafts = "!(_originalId in path('drafts.**'))";

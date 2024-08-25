@@ -111,6 +111,11 @@ const Utils = css`
       &-decoration {
         &-underline {
           text-decoration: underline;
+          &-hover {
+            &:hover {
+              text-decoration: underline !important;
+            }
+          }
         }
         &-none {
           text-decoration: none;
@@ -134,6 +139,9 @@ const Utils = css`
       white-space: nowrap;
     }
     &__text {
+      &-light {
+        color: var(--t-light-text-color);
+      }
       &-branding {
         &-primary {
           color: var(--t-primary-branding-color);
@@ -141,6 +149,11 @@ const Utils = css`
         &-secondary {
           color: var(--t-secondary-branding-color);
         }
+      }
+    }
+    &__font-weight {
+      &-heading {
+        font-weight: var(--t-font-weight-heading);
       }
     }
     &__font-family {

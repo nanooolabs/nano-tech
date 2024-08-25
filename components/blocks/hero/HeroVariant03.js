@@ -18,16 +18,24 @@ const HeroVariant03 = ({ data }) => {
         <div className={`${data.align_left ? `text-start` : `text-center`}`}>
           {data.heading && (
             <div className="c__heading-wrapper mb-4">
-              <Heading tag={data.heading_tag} className="u__d2">
+              <Heading
+                tag={data.heading_tag}
+                className={`u__${data.heading_size ? data.heading_size : `d2`}`}
+              >
                 {data.heading}
               </Heading>
             </div>
           )}
           {data.description && (
-            <div className="c__subtitle-wrapper mb-4">
-              <h2 className="c__heading u__h6  mb-2">
-                {parse(data.description)}
-              </h2>
+            <div
+              className={`c__subtitle-wrapper ${data.button_title ? `mb-4` : ``}`}
+            >
+              <Heading
+                tag={data?.description_tag}
+                className={`u__${data.description_size ? data.description_size : `h6`}  ${data.button_title ? `mb-2` : `mb-0`}`}
+              >
+                {data.description}
+              </Heading>
             </div>
           )}
           {data.button_title && (

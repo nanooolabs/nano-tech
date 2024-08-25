@@ -7,6 +7,7 @@ import clientConfig from "./sanity/config/clientConfig";
 import { baseUrl } from "./lib/constants";
 import { locations } from "./sanity/utils/presentation";
 import { codeInput } from "@sanity/code-input";
+import { media } from "sanity-plugin-media";
 
 export default defineConfig({
   name: "default",
@@ -27,6 +28,7 @@ export default defineConfig({
     }),
     visionTool(),
     codeInput(),
+    media(),
   ],
   schema: {
     types: schemaTypes,

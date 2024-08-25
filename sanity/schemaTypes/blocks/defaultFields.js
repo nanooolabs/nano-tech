@@ -24,6 +24,8 @@ export const generateHeadingTagField = (name, title) => {
         { title: "H4", value: "h4" },
         { title: "H5", value: "h5" },
         { title: "H6", value: "h6" },
+        { title: "P", value: "p" },
+        { title: "Span", value: "span" },
       ],
     },
   };

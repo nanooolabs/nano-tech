@@ -101,6 +101,7 @@ const Theme = css`
     // Misc
     --t-border-color: #eee;
     --t-light-background-color: #fcf9ff;
+    --t-light-text-color: #686868;
     --t-global-card-border-radius: 16px;
     --t-global-image-border-radius: 16px;
     // Blobs

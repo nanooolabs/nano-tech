@@ -15,6 +15,10 @@ const Wrapper = styled.article`
     &__image-wrapper {
       width: 100%;
       height: 300px;
+      @media (max-width: 500px) {
+        width: 125%;
+        margin-left: -2rem;
+      }
       @media (min-width: 768px) {
         height: 450px;
       }
@@ -32,6 +36,7 @@ const Wrapper = styled.article`
 `;
 
 const PostVariant01 = ({ data }) => {
+  console.log(data);
   return (
     <Bounded
       id={data?._key}
@@ -73,7 +78,7 @@ const PostVariant01 = ({ data }) => {
             <div className="b__post__variant01__body u__mw-800 mx-auto">
               {data.publish_date && (
                 <div className="b__post__variant01__date-wrapper mb-4">
-                  <span className="u__small" style={{ color: `#686868` }}>
+                  <span className="u__small u__text-light">
                     <time dateTime={`${data.publish_date}T00:00:00Z`}>
                       Published on {formatDate(data.publish_date)}
                     </time>

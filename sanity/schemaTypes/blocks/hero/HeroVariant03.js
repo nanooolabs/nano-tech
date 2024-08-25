@@ -54,6 +54,11 @@ const HeroVariant03 = defineType({
       group: "content",
     }),
     defineField(generateHeadingTagField(`heading_tag`, `Heading Tag`)),
+    defineField(generateHeadingTagField(`heading_size`, `Heading Size`)),
+    defineField(generateHeadingTagField(`description_tag`, `Description Tag`)),
+    defineField(
+      generateHeadingTagField(`description_size`, `Description Size`)
+    ),
     defineField({
       name: "description",
       title: "Description",
