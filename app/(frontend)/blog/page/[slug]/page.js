@@ -40,6 +40,9 @@ export default async function BlogArchive({ params }) {
 
 export const generateMetadata = async ({ params }) => {
   const { slug } = params;
+  if (isNaN(parseFloat(slug))) {
+    return {};
+  }
   const start = slug * paginatedItemsPerPage - paginatedItemsPerPage;
   const end = slug * paginatedItemsPerPage;
 
@@ -53,9 +56,6 @@ export const generateMetadata = async ({ params }) => {
     seo_no_index: false,
   };
   const data = await getPosts(start, end);
-  if (isNaN(parseFloat(slug))) {
-    return {};
-  }
   if (!data || data.length === 0) {
     return {};
   }
