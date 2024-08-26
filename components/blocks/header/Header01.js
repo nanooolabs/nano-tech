@@ -13,6 +13,7 @@ const Header = () => {
   const pathname = usePathname();
   useEffect(() => {
     setMenuOpen(false);
+    window.scrollTo(0, 0);
   }, [pathname]);
 
   return (
