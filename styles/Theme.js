@@ -104,6 +104,8 @@ const Theme = css`
     --t-light-text-color: #686868;
     --t-global-card-border-radius: 16px;
     --t-global-image-border-radius: 16px;
+    --t-pagination-button-color: #fcf9ff;
+    --t-pagination-button-hover-color: #f5f1f9;
     // Blobs
     --t-blob-color-1: var(--t-primary-branding-color);
     --t-blob-color-2: #28ffea;

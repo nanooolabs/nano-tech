@@ -10,6 +10,12 @@ import { notFound } from "next/navigation";
 import { redirect } from "next/navigation";
 import { generateBlogHeroData, generateBlogMetaData } from "@/lib/constants";
 
+const totalNumberOfPosts = await getPostsCount();
+const totalNumberOfPaginatedPages = getTotalNumberOfPaginatedPages(
+  totalNumberOfPosts,
+  paginatedItemsPerPage
+);
+
 export default async function BlogArchivePaginated({ params }) {
   const { slug } = params;
   if (isNaN(parseFloat(slug))) {
@@ -20,13 +26,28 @@ export default async function BlogArchivePaginated({ params }) {
   }
   const start = slug * paginatedItemsPerPage - paginatedItemsPerPage;
   const end = slug * paginatedItemsPerPage;
+  const lastPaginatedPage = isLastPaginatedPage(
+    totalNumberOfPaginatedPages,
+    parseFloat(slug)
+  );
   const data = await getPosts(start, end);
   if (!data || data.length === 0) {
     return notFound();
   }
   const heroData = generateBlogHeroData(slug);
 
-  return <TemplateArchiveVariant01 heroData={heroData} bodyData={data} />;
+  return (
+    <TemplateArchiveVariant01
+      heroData={heroData}
+      bodyData={data}
+      prevPageDestination={
+        parseFloat(slug) === 2 ? `/blog` : `/blog/page/${parseFloat(slug) - 1}`
+      }
+      nextPageDestination={
+        lastPaginatedPage ? null : `/blog/page/${parseFloat(slug) + 1}`
+      }
+    />
+  );
 }
 
 export const generateMetadata = async ({ params }) => {
@@ -40,11 +61,6 @@ export const generateMetadata = async ({ params }) => {
   if (!data || data.length === 0) {
     return {};
   }
-  const totalNumberOfPosts = await getPostsCount();
-  const totalNumberOfPaginatedPages = getTotalNumberOfPaginatedPages(
-    totalNumberOfPosts,
-    paginatedItemsPerPage
-  );
   const lastPaginatedPage = isLastPaginatedPage(
     totalNumberOfPaginatedPages,
     parseFloat(slug)

@@ -1,11 +1,20 @@
 import { HeroVariant03 } from "@/components/blocks/hero";
 import ArchiveVariant01 from "@/components/blocks/archive/ArchiveVariant01";
 
-const TemplateArchiveVariant01 = ({ heroData, bodyData }) => {
+const TemplateArchiveVariant01 = ({
+  heroData,
+  bodyData,
+  prevPageDestination,
+  nextPageDestination,
+}) => {
   return (
     <>
       <HeroVariant03 data={heroData} />
-      <ArchiveVariant01 data={bodyData} />
+      <ArchiveVariant01
+        data={bodyData}
+        prevPageDestination={prevPageDestination}
+        nextPageDestination={nextPageDestination}
+      />
     </>
   );
 };

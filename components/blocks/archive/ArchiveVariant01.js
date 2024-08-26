@@ -6,6 +6,7 @@ import { baseUrl } from "@/lib/constants";
 import { stegaClean } from "@sanity/client/stega";
 import urlFor from "@/lib/imageUrlBuilder";
 import Button from "@/components/modules/Button";
+import Pagination from "@/components/modules/Pagination";
 
 const Wrapper = styled.div`
   .b__archive__variant01 {
@@ -16,7 +17,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const ArchiveVariant01 = ({ data }) => {
+const ArchiveVariant01 = ({
+  data,
+  prevPageDestination,
+  nextPageDestination,
+}) => {
   return (
     <Bounded
       id={data?._key}
@@ -63,6 +68,16 @@ const ArchiveVariant01 = ({ data }) => {
             })}
           </div>
         </div>
+        {prevPageDestination || nextPageDestination ? (
+          <div className="container mt-5 pt-4">
+            <Pagination
+              prevPageDestination={prevPageDestination}
+              nextPageDestination={nextPageDestination}
+            />
+          </div>
+        ) : (
+          ``
+        )}
       </Wrapper>
     </Bounded>
   );

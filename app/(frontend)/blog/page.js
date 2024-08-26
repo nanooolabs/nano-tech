@@ -9,6 +9,13 @@ import { getPosts, getPostsCount } from "@/sanity/utils/queries";
 import { notFound } from "next/navigation";
 import { generateBlogHeroData, generateBlogMetaData } from "@/lib/constants";
 
+const totalNumberOfPosts = await getPostsCount();
+const totalNumberOfPaginatedPages = getTotalNumberOfPaginatedPages(
+  totalNumberOfPosts,
+  paginatedItemsPerPage
+);
+const lastPaginatedPage = isLastPaginatedPage(totalNumberOfPaginatedPages, 1);
+
 export default async function BlogArchive() {
   const data = await getPosts(0, paginatedItemsPerPage);
   if (!data) {
@@ -16,18 +23,18 @@ export default async function BlogArchive() {
   }
   const heroData = generateBlogHeroData();
 
-  return <TemplateArchiveVariant01 heroData={heroData} bodyData={data} />;
+  return (
+    <TemplateArchiveVariant01
+      heroData={heroData}
+      bodyData={data}
+      nextPageDestination={lastPaginatedPage ? null : `/blog/page/2`}
+    />
+  );
 }
 
 export const generateMetadata = async () => {
   const staticMetaData = generateBlogMetaData();
   const data = await getPosts(0, paginatedItemsPerPage);
-  const totalNumberOfPosts = await getPostsCount();
-  const totalNumberOfPaginatedPages = getTotalNumberOfPaginatedPages(
-    totalNumberOfPosts,
-    paginatedItemsPerPage
-  );
-  const lastPaginatedPage = isLastPaginatedPage(totalNumberOfPaginatedPages, 1);
 
   if (!data) return {};
   return getMetaData(

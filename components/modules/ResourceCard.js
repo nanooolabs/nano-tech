@@ -82,7 +82,7 @@ const ResourceCard = ({
         )}
         {description && (
           <div className="c__resource-card__description-wrapper">
-            <p className="u__small">{description}</p>
+            <p className="u__small">{parse(description)}</p>
           </div>
         )}
       </div>
