@@ -1,20 +1,10 @@
 import TemplateArchiveVariant01 from "@/components/templates/archive/TemplateArchiveVariant01";
 import { paginatedItemsPerPage } from "@/lib/constants";
-import {
-  getTotalNumberOfPaginatedPages,
-  isLastPaginatedPage,
-} from "@/lib/helpers";
+import { getPaginationContext } from "@/lib/helpers";
 import { getMetaData } from "@/lib/seo";
 import { getPosts, getPostsCount } from "@/sanity/utils/queries";
 import { notFound } from "next/navigation";
 import { generateBlogHeroData, generateBlogMetaData } from "@/lib/constants";
-
-const totalNumberOfPosts = await getPostsCount();
-const totalNumberOfPaginatedPages = getTotalNumberOfPaginatedPages(
-  totalNumberOfPosts,
-  paginatedItemsPerPage
-);
-const lastPaginatedPage = isLastPaginatedPage(totalNumberOfPaginatedPages, 1);
 
 export default async function BlogArchive() {
   const data = await getPosts(0, paginatedItemsPerPage);
@@ -22,7 +12,11 @@ export default async function BlogArchive() {
     return notFound();
   }
   const heroData = generateBlogHeroData();
-
+  const { lastPaginatedPage } = await getPaginationContext(
+    getPostsCount(),
+    paginatedItemsPerPage,
+    1
+  );
   return (
     <TemplateArchiveVariant01
       heroData={heroData}
@@ -35,8 +29,13 @@ export default async function BlogArchive() {
 export const generateMetadata = async () => {
   const staticMetaData = generateBlogMetaData();
   const data = await getPosts(0, paginatedItemsPerPage);
-
   if (!data) return {};
+  const { lastPaginatedPage } = await getPaginationContext(
+    getPostsCount(),
+    paginatedItemsPerPage,
+    1
+  );
+
   return getMetaData(
     staticMetaData,
     `blog`,
