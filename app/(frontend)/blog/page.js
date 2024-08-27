@@ -29,7 +29,7 @@ export default async function BlogArchive() {
 export const generateMetadata = async () => {
   const staticMetaData = generateBlogMetaData();
   const data = await getPosts(0, paginatedItemsPerPage);
-  if (!data) return {};
+  if (!data || !data.length) return {};
   const { lastPaginatedPage } = await getPaginationContext(
     getPostsCount(),
     paginatedItemsPerPage,
