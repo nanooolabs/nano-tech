@@ -7,10 +7,9 @@ import { generateBlogHeroData, generateBlogMetaData } from "@/lib/constants";
 
 export default async function BlogCategoryArchive({ params }) {
   const { slug } = params;
-
   const data = await getPostsByCategory(0, 1000, slug);
   const category = await getCategoryBySlug(slug);
-  if (!data || !data.length) {
+  if (!data || !data.length || !category) {
     return notFound();
   }
   const heroData = generateBlogHeroData(`Posts in ${category.title}`, null);
@@ -27,10 +26,10 @@ export const generateMetadata = async ({ params }) => {
   const { slug } = params;
   const data = await getPostsByCategory(0, 1000, slug);
   const category = await getCategoryBySlug(slug);
+  if (!data || !data.length || !category) return {};
   const staticMetaData = generateBlogMetaData(
     `Posts tagged in ${category.title} | ${organization}`
   );
-  if (!data) return {};
 
   return getMetaData(staticMetaData, `blog/category/${slug}`, null, null);
 };
