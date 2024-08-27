@@ -8,7 +8,7 @@ import { generateBlogHeroData, generateBlogMetaData } from "@/lib/constants";
 
 export default async function BlogArchive() {
   const data = await getPosts(0, paginatedItemsPerPage);
-  if (!data) {
+  if (!data || !data.length) {
     return notFound();
   }
   const heroData = generateBlogHeroData();

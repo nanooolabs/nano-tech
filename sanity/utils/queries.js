@@ -44,7 +44,7 @@ export async function getPostBySlug(slug) {
           asset->
         }
       },
-      categories[0]->
+      "primary_category": categories[0]->
     }`,
     { slug },
     { tags: ["post"] }
@@ -67,6 +67,39 @@ export async function getPosts(start, end) {
   );
 }
 
+export async function getPostsByCategory(start, end, categorySlug) {
+  return fetchSanity(
+    groq`*[_type == "post" && ${QUERY_omitDrafts} && $categorySlug in categories[]->slug.current] | order(publish_date desc)[${start}...${end}] {
+      ...,
+      featured_image {
+        ... {
+          asset->
+        }
+      },
+      "excerpt": array::join(string::split((pt::text(content)), "")[0..100], "") + "..."
+    }`,
+    { start, end, categorySlug },
+    { tags: ["post"] }
+  );
+}
+
+export async function getCategoryBySlug(categorySlug) {
+  return fetchSanity(
+    groq`*[_type == "post_category" && ${QUERY_omitDrafts} && slug.current == $categorySlug][0] {
+      title
+    }`,
+    { categorySlug },
+    { tags: ["post"] }
+  );
+}
+
 export async function getPostsCount() {
   return fetchSanity(groq`count(*[_type == "post" && ${QUERY_omitDrafts}])`);
+}
+
+export async function getPostsByCategoryCount(categorySlug) {
+  return fetchSanity(
+    groq`count(*[_type == "post" && ${QUERY_omitDrafts} && $categorySlug in categories[]->slug.current])`,
+    { categorySlug }
+  );
 }

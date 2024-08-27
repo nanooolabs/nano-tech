@@ -17,10 +17,12 @@ const HeroVariant03 = ({ data }) => {
       >
         <div className={`${data.align_left ? `text-start` : `text-center`}`}>
           {data.heading && (
-            <div className="c__heading-wrapper mb-4">
+            <div
+              className={`c__heading-wrapper ${data.description ? `mb-4` : `mb-0`}`}
+            >
               <Heading
                 tag={data.heading_tag}
-                className={`u__${data.heading_size ? data.heading_size : `d2`}`}
+                className={`u__${data.heading_size ? data.heading_size : `d2`} ${!data.description && `mb-0`}`}
               >
                 {data.heading}
               </Heading>

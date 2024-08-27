@@ -1,5 +1,5 @@
 import TemplateArchiveVariant01 from "@/components/templates/archive/TemplateArchiveVariant01";
-import { paginatedItemsPerPage } from "@/lib/constants";
+import { organization, paginatedItemsPerPage } from "@/lib/constants";
 import { getPaginationContext } from "@/lib/helpers";
 import { getMetaData } from "@/lib/seo";
 import { getPosts, getPostsCount } from "@/sanity/utils/queries";
@@ -26,7 +26,7 @@ export default async function BlogArchivePaginated({ params }) {
     paginatedItemsPerPage,
     parseFloat(slug)
   );
-  const heroData = generateBlogHeroData(slug);
+  const heroData = generateBlogHeroData(`Resource Library - Page ${slug}`);
   return (
     <TemplateArchiveVariant01
       heroData={heroData}
@@ -57,7 +57,9 @@ export const generateMetadata = async ({ params }) => {
     paginatedItemsPerPage,
     parseFloat(slug)
   );
-  const staticMetaData = generateBlogMetaData(slug);
+  const staticMetaData = generateBlogMetaData(
+    `Latest Posts | Page ${slug} | ${organization}`
+  );
   return getMetaData(
     staticMetaData,
     `blog/page/${slug}`,

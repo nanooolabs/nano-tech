@@ -36,7 +36,6 @@ const Wrapper = styled.article`
 `;
 
 const PostVariant01 = ({ data }) => {
-  console.log(data);
   return (
     <Bounded
       id={data?._key}
@@ -48,16 +47,16 @@ const PostVariant01 = ({ data }) => {
         <div className="container">
           <div className="b__post__variant01__header">
             <div className="b__post__variant01__heading-wrapper u__mw-700 mx-auto mb-4 pb-2 text-center">
-              {data.categories && (
+              {data.primary_category && (
                 <Link
                   href={
-                    data.categories.slug.current
-                      ? `/blog/category/${data.categories.slug.current}`
+                    data.primary_category.slug.current
+                      ? `/blog/category/${data.primary_category.slug.current}`
                       : `#`
                   }
                   className="u__subtitle mb-2 u__f-500 u__text-branding-primary u__font-family-heading u__text-decoration-none"
                 >
-                  {data.categories.title}
+                  {data.primary_category.title}
                 </Link>
               )}
               {data.title || data.heading ? (
