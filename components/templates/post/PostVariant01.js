@@ -48,12 +48,18 @@ const PostVariant01 = ({ data }) => {
         <div className="container">
           <div className="b__post__variant01__header">
             <div className="b__post__variant01__heading-wrapper u__mw-700 mx-auto mb-4 pb-2 text-center">
-              {/* <Link
-                href="#"
-                className="u__subtitle mb-2 u__f-500 u__text-branding-primary u__font-family-heading u__text-decoration-none"
-              >
-                Personal Finance
-              </Link> */}
+              {data.categories && (
+                <Link
+                  href={
+                    data.categories.slug.current
+                      ? `/blog/category/${data.categories.slug.current}`
+                      : `#`
+                  }
+                  className="u__subtitle mb-2 u__f-500 u__text-branding-primary u__font-family-heading u__text-decoration-none"
+                >
+                  {data.categories.title}
+                </Link>
+              )}
               {data.title || data.heading ? (
                 <Heading tag="h1">
                   {stegaClean(data.heading) ? data.heading : data.title}

@@ -2,7 +2,7 @@ import { Groups } from "@/sanity/utils/constants";
 import { isUniqueAcrossAllDocuments } from "@/sanity/utils/helpers";
 import { defineField, defineArrayMember } from "sanity";
 
-export const Post = {
+const Post = {
   name: "post",
   title: "Posts",
   type: "document",
@@ -66,6 +66,17 @@ export const Post = {
       name: "publish_date",
       type: "date",
       validation: (Rule) => Rule.required(),
+      group: "content",
+    }),
+    defineField({
+      name: "categories",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "post_category" }],
+        },
+      ],
       group: "content",
     }),
     defineField({

@@ -1,12 +1,10 @@
 import { Groups } from "@/sanity/utils/constants";
 import { isUniqueAcrossAllDocuments } from "@/sanity/utils/helpers";
 import { defineField, defineArrayMember } from "sanity";
-import { createDocumentArray } from "@/sanity/utils/helpers";
-import pageBuilderBlocks from "../blocks";
 
-const Page = {
-  name: "page",
-  title: "Pages",
+const PostCategory = {
+  name: "post_category",
+  title: "Post Categories",
   type: "document",
   groups: Groups,
   fields: [
@@ -64,47 +62,6 @@ const Page = {
         },
       ],
     },
-    defineField({
-      name: "page_builder",
-      title: "Page Builder",
-      type: "array",
-      group: "content",
-      of: createDocumentArray(pageBuilderBlocks),
-      options: {
-        insertMenu: {
-          groups: [
-            {
-              name: "hero",
-              title: "Hero",
-              of: pageBuilderBlocks
-                .filter((elem) => elem._menuCategory === "hero")
-                ?.map((elem) => elem.name),
-            },
-            {
-              name: "feature",
-              title: "Feature",
-              of: pageBuilderBlocks
-                .filter((elem) => elem._menuCategory === "feature")
-                ?.map((elem) => elem.name),
-            },
-            {
-              name: "content",
-              title: "Content",
-              of: pageBuilderBlocks
-                .filter((elem) => elem._menuCategory === "content")
-                ?.map((elem) => elem.name),
-            },
-            {
-              name: "faq",
-              title: "FAQs",
-              of: pageBuilderBlocks
-                .filter((elem) => elem._menuCategory === "faq")
-                ?.map((elem) => elem.name),
-            },
-          ],
-        },
-      },
-    }),
   ],
   preview: {
     select: {
@@ -116,11 +73,12 @@ const Page = {
       const { title, slug, featured_image } = selection;
       return {
         title,
-        subtitle: slug && (slug === "index" ? "/" : `/${slug}`),
+        subtitle:
+          slug && (slug === "index" ? "/category" : `/category/${slug}`),
         media: featured_image,
       };
     },
   },
 };
 
-export default Page;
+export default PostCategory;

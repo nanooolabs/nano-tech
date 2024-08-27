@@ -43,7 +43,8 @@ export async function getPostBySlug(slug) {
         ... {
           asset->
         }
-      }
+      },
+      categories[0]->
     }`,
     { slug },
     { tags: ["post"] }
