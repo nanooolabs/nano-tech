@@ -48,16 +48,18 @@ const PostVariant01 = ({ data }) => {
           <div className="b__post__variant01__header">
             <div className="b__post__variant01__heading-wrapper u__mw-700 mx-auto mb-4 pb-2 text-center">
               {data.primary_category && (
-                <Link
-                  href={
-                    data.primary_category.slug.current
-                      ? `/blog/category/${data.primary_category.slug.current}`
-                      : `#`
-                  }
-                  className="u__subtitle mb-2 u__f-500 u__text-branding-primary u__font-family-heading u__text-decoration-none"
-                >
-                  {data.primary_category.title}
-                </Link>
+                <div className="mb-2">
+                  <Link
+                    href={
+                      data.primary_category.slug.current
+                        ? `/blog/category/${data.primary_category.slug.current}`
+                        : `#`
+                    }
+                    className="u__subtitle u__f-500 u__text-branding-primary u__font-family-heading u__text-decoration-none"
+                  >
+                    {data.primary_category.title}
+                  </Link>
+                </div>
               )}
               {data.title || data.heading ? (
                 <Heading tag="h1">
