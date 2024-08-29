@@ -82,9 +82,10 @@ const Theme = css`
     --t-form-label-color: #25282a;
     --t-form-help-text-color: var(--t-body-color);
     --t-form-input-box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
-    --t-form-input-border-radius: 4px;
+    --t-form-input-border-radius: 8px;
     --t-form-input-focus-border-color: var(--t-primary-branding-color);
-    --t-form-input-border-color: #a8a9ab;
+    --t-form-input-focus-box-shadow: 0px 0px 0px 4px #780df21f;
+    --t-form-input-border-color: #d4d4d4;
     --t-form-placeholder-color: #a8a9ab;
     // Box shadows
     --t-box-shadow-xs: 0px 1px 2px rgba(16, 24, 40, 0.05);
@@ -113,6 +114,10 @@ const Theme = css`
     --t-blob-color-4: #ff28b8;
     // Palette
     --t-cp-base-white: #fff;
+    --t-cp-error-50: #fee4e2;
+    --t-cp-error-400: #b42318;
+    --t-cp-success-100: #ddffcf;
+    --t-cp-success-400: #78da4e;
   }
 `;
 

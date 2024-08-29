@@ -1,96 +1,4 @@
 .c {
-  &__button {
-    padding: var(--t-button-padding);
-    border-radius: var(--t-button-border-radius);
-    &__content {
-      font-weight: var(--t-font-weight-button);
-      font-family: var(--t-font-family-button);
-    }
-    &__size {
-      &--default {
-        font-size: 16px;
-      }
-      &--large {
-        font-size: 18px;
-      }
-      &--xlarge {
-        font-size: 20px;
-      }
-    }
-    &__anchor-element {
-      text-decoration: none;
-      &:hover,
-      &:focus,
-      &:active {
-        text-decoration: none;
-      }
-      > span.c__button {
-        display: inline-block;
-      }
-    }
-    &--primary {
-      background: var(--t-primary-branding-color);
-      color: var(--t-cp-base-white);
-      &:hover {
-        background: var(--t-primary-branding-hover-color);
-      }
-    }
-    &--secondary {
-      background: var(--t-secondary-branding-color);
-      color: var(--t-cp-base-white);
-      &:hover {
-        background: var(--t-secondary-branding-hover-color);
-      }
-    }
-    &--ghost {
-      &-primary {
-        background: transparent;
-        border: 2px solid var(--t-primary-branding-color);
-        color: var(--t-primary-branding-color);
-        &:hover {
-          background: var(--t-primary-branding-hover-color);
-          color: var(--t-cp-base-white);
-        }
-      }
-      &-secondary {
-        background: transparent;
-        border: 2px solid var(--t-secondary-branding-color);
-        color: var(--t-secondary-branding-color);
-        &:hover {
-          background: var(--t-secondary-branding-hover-color);
-          color: var(--t-cp-base-white);
-        }
-      }
-    }
-    &--link {
-      background-color: transparent;
-      border: none;
-      color: var(--t-anchor-color);
-      padding: 0;
-      .c {
-        &__button {
-          &__content {
-            font-weight: 600 !important;
-          }
-        }
-      }
-      &:hover {
-        color: var(--t-anchor-hover-color);
-        .c {
-          &__button__content {
-            text-decoration: underline;
-            text-underline-offset: 6px;
-            text-decoration-thickness: 1px;
-          }
-        }
-        svg {
-          path {
-            stroke: var(--t-anchor-hover-color);
-          }
-        }
-      }
-    }
-  }
   &__button-wrapper {
     &--flex {
       @media (min-width: 576px) {
@@ -308,6 +216,35 @@
           }
         }
       }
+    }
+  }
+  &__spinner {
+    animation: rotate 2s linear infinite;
+    width: 50px;
+    height: 50px;
+    .path {
+      stroke: var(--t-cp-base-white);
+      stroke-linecap: round;
+      animation: dash 1.5s ease-in-out infinite;
+    }
+    &-wrapper {
+      &--viewport {
+        position: relative;
+        min-height: 400px;
+        .c {
+          &__spinner {
+            .path {
+              stroke: var(--t-primary-branding-color);
+            }
+          }
+        }
+      }
+    }
+    &-parent {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
   // New component styles here
