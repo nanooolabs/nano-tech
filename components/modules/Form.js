@@ -4,7 +4,7 @@ import parse from "html-react-parser";
 import styled from "styled-components";
 import Button from "./Button";
 import { stegaClean } from "@sanity/client/stega";
-import { checkValidJSONString } from "@/lib/helpers";
+import { checkValidJSONString, checkValidJS } from "@/lib/helpers";
 import { usePathname } from "next/navigation";
 import { baseUrl } from "@/lib/constants";
 
@@ -134,7 +134,10 @@ const Form = ({
   formMessage,
 }) => {
   formFields = stegaClean(`${formFields}`);
-  formFields = new Function(`return ${formFields}`)();
+  formFields = checkValidJS(`return ${formFields}`)
+    ? new Function(`return ${formFields}`)()
+    : null;
+  parse(`return ${formFields}`);
   const pathname = usePathname();
 
   // console.log(formFields);
