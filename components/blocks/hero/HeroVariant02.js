@@ -76,13 +76,14 @@ const HeroVariant02 = ({ data }) => {
                 <p className="c__description u__h6">{parse(data.content)}</p>
               </div>
             )}
-
-            <div className="c__button-wrapper mt-4 pt-3">
-              <Button
-                destination={data.button_destination}
-                title={data.button_title}
-              />
-            </div>
+            {data.button_title && (
+              <div className="c__button-wrapper mt-4 pt-3">
+                <Button
+                  destination={data.button_destination}
+                  title={data.button_title}
+                />
+              </div>
+            )}
           </div>
           <div className="col-lg-6">
             {data.image && (

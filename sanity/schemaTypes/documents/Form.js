@@ -9,7 +9,8 @@ const Form = {
       name: "title",
       title: "Title",
       type: "string",
-      validation: (rule) => rule.warning("Title is required"),
+      // validation: (rule) => rule.warning("Title is required"),
+      validation: (rule) => rule.required(),
     },
     {
       name: "formspark_id",
@@ -28,7 +29,7 @@ const Form = {
         language: "js",
         languageAlternatives: [{ title: "JavaScript", value: "js" }],
       },
-      validation: (rule) => rule.warning("Form Fields are required"),
+      validation: (rule) => rule.required(),
     },
   ],
   preview: {

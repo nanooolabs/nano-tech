@@ -21,6 +21,7 @@ export async function getPageBySlug(slug) {
           asset->
         }
       },
+      "form": form->
     }
 }`,
     { slug },

@@ -14,7 +14,6 @@ export const generateHeadingTagField = (name, title) => {
     name,
     title,
     type: "string",
-    initialValue: "h2",
     group: "content",
     options: {
       list: [
@@ -36,7 +35,6 @@ export const generateHeadingSizeField = (name, title) => {
     name,
     title,
     type: "string",
-    initialValue: "h2",
     group: "content",
     options: {
       list: [
