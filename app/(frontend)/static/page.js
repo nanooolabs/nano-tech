@@ -130,17 +130,19 @@ const HeroVariant05 = ({ data }) => {
             </div>
           </div>
           <div className="col-lg-6">
-            <div className="b__hero__variant05__form-wrapper">
-              <Form
-                isValid={isValid}
-                formFields={SCHEMA__ContactForm}
-                register={register}
-                errors={errors}
-                control={control}
-                onSubmit={handleSubmit(onSubmit)}
-                payloadPosting={payloadPosting}
-                formMessage={formMessage}
-              />
+            <div className="ps-lg-5">
+              <div className="b__hero__variant05__form-wrapper">
+                <Form
+                  isValid={isValid}
+                  formFields={SCHEMA__ContactForm}
+                  register={register}
+                  errors={errors}
+                  control={control}
+                  onSubmit={handleSubmit(onSubmit)}
+                  payloadPosting={payloadPosting}
+                  formMessage={formMessage}
+                />
+              </div>
             </div>
           </div>
         </div>
