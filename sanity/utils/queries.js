@@ -109,8 +109,24 @@ export async function getNavigationBySlug(slug) {
   return fetchSanity(
     groq`*[_type == "navigation" && ${QUERY_omitDrafts} && slug.current == $slug][0]{
       ...,
+      items[] {
+        ...,
+        "uid": uid.current,
+        links[] {
+          ...,
+          "uid": uid.current,
+          links[] {
+            ...,
+            "uid": uid.current,
+            links[] {
+              ...,
+              "uid": uid.current,
+            }
+          }
+        }
+      }
     }`,
     { slug },
-    { tags: ["post"] }
+    { tags: ["navigation"] }
   );
 }

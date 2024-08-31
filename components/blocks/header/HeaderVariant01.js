@@ -4,21 +4,60 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Button from "@/components/modules/Button";
 
-const MenuLink = ({ depth, hasChildren, elem, isMobile, pathname }) => {
+const updateActiveStatusByKey = (data, uid) => {
+  let itemFoundAtLevel = false;
+
+  const updatedData = data.map((item) => {
+    if (item.uid === uid) {
+      itemFoundAtLevel = true;
+      return { ...item, active: item.active ? false : true };
+    }
+    return item;
+  });
+
+  return updatedData.map((item) => {
+    if (itemFoundAtLevel && item.uid !== uid) {
+      return { ...item, active: false };
+    }
+
+    if (item.links && item.links.length > 0) {
+      return { ...item, links: updateActiveStatusByKey(item.links, uid) };
+    }
+    return item;
+  });
+};
+
+const getActiveStatusByKey = (data, uid) => {
+  for (let item of data) {
+    if (item.uid === uid) {
+      return item.active !== undefined ? item.active : null;
+    }
+    if (item.links && item.links.length > 0) {
+      const result = getActiveStatusByKey(item.links, uid);
+      if (result !== null) {
+        return result;
+      }
+    }
+  }
+  return null;
+};
+
+const MenuLink = ({
+  depth,
+  hasChildren,
+  elem,
+  isMobile,
+  pathname,
+  handleNavigationState,
+  navigationState,
+}) => {
   if (!elem) return null;
-  const [activeItemId, setActiveItemId] = useState(null);
 
-  const handleExpandSubmenu = (id) => {
-    setActiveItemId((prevId) => (prevId === id ? null : id));
-  };
-
-  useEffect(() => {
-    setActiveItemId(null);
-  }, [pathname]);
+  const isActive = getActiveStatusByKey(navigationState, elem.uid);
 
   return (
     <li
-      className={`b__header__header01__menu-item b__header__header01__menu-item-depth-${depth} ${hasChildren ? `b__header__header01__menu-item--has-children` : ``} ${elem._key === activeItemId ? `b__header__header01__menu-item--active` : ``}`}
+      className={`b__header__header01__menu-item b__header__header01__menu-item-depth-${depth} ${hasChildren ? `b__header__header01__menu-item--has-children` : ``} ${isActive ? `b__header__header01__menu-item--active` : ``}`}
       key={elem._key}
       role="none"
     >
@@ -32,7 +71,7 @@ const MenuLink = ({ depth, hasChildren, elem, isMobile, pathname }) => {
             onClick={
               hasChildren
                 ? () => {
-                    handleExpandSubmenu(elem._key);
+                    handleNavigationState(elem.uid);
                   }
                 : null
             }
@@ -66,6 +105,8 @@ const MenuLink = ({ depth, hasChildren, elem, isMobile, pathname }) => {
               elem={childElem}
               isMobile={isMobile}
               pathname={pathname}
+              handleNavigationState={handleNavigationState}
+              navigationState={navigationState}
             />
           ))}
         </ul>
@@ -76,11 +117,35 @@ const MenuLink = ({ depth, hasChildren, elem, isMobile, pathname }) => {
 
 const HeaderVariant01 = ({ navigationSchema }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [navigationState, setNavigationState] = useState(
+    navigationSchema?.items
+  );
+  const [windowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
+
+  const handleNavigationState = (id) => {
+    setNavigationState(updateActiveStatusByKey(navigationState, id));
+  };
+
   const pathname = usePathname();
+
+  const handleResize = () => {
+    setNavigationState(navigationSchema?.items);
+  };
+
   useEffect(() => {
     setMenuOpen(false);
+    setNavigationState(navigationSchema?.items);
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <>
@@ -110,6 +175,8 @@ const HeaderVariant01 = ({ navigationSchema }) => {
                         elem={elem}
                         key={elem._key}
                         pathname={pathname}
+                        navigationState={navigationState}
+                        handleNavigationState={handleNavigationState}
                       />
                     );
                   })}
@@ -151,6 +218,8 @@ const HeaderVariant01 = ({ navigationSchema }) => {
                           key={elem._key}
                           isMobile
                           pathname={pathname}
+                          navigationState={navigationState}
+                          handleNavigationState={handleNavigationState}
                         />
                       );
                     })}

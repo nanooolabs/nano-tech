@@ -2,6 +2,7 @@ import { Groups } from "@/sanity/utils/constants";
 import { defineField } from "sanity";
 import { generateLinkField } from "../blocks/defaultFields";
 import { isUniqueAcrossAllDocuments } from "@/sanity/utils/helpers";
+import { uuid } from "@sanity/uuid";
 
 const Navigation = {
   name: "navigation",
@@ -42,6 +43,20 @@ const Navigation = {
               name: "destination",
               title: "Destination",
               type: "string",
+            }),
+            defineField({
+              name: "uid",
+              title: "UID",
+              type: "slug",
+              description: "Please verify this is unique across all menu items",
+              initialValue: uuid(),
+              validation: (Rule) => Rule.required(),
+              options: {
+                source: () => {
+                  return `${uuid()}`;
+                },
+                isUnique: isUniqueAcrossAllDocuments,
+              },
             }),
             defineField({
               name: "links",

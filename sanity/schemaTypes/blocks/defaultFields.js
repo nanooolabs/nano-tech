@@ -1,4 +1,6 @@
 import { defineField } from "sanity";
+import { isUniqueAcrossAllDocuments } from "@/sanity/utils/helpers";
+import { uuid } from "@sanity/uuid";
 
 export const scopedCss = {
   name: "scoped_css",
@@ -68,6 +70,20 @@ export const generateLinkField = (name, title, depth = 2, maxDepth = 4) => {
         name: "destination",
         title: "Destination",
         type: "string",
+      }),
+      defineField({
+        name: "uid",
+        title: "UID",
+        type: "slug",
+        description: "Please verify this is unique across all menu items",
+        initialValue: uuid(),
+        validation: (Rule) => Rule.required(),
+        options: {
+          source: () => {
+            return `${uuid()}`;
+          },
+          isUnique: isUniqueAcrossAllDocuments,
+        },
       }),
       ...(depth < maxDepth
         ? [
