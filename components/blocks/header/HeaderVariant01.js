@@ -123,7 +123,6 @@ const HeaderVariant01 = ({ navigationSchema }) => {
     navigationSchema?.items
   );
   const [subMenusToggledByTab, setSubMenusToggledByTab] = useState(false);
-  const [stickyHeader, setStickyHeader] = useState(false);
 
   const handleNavigationState = (id) => {
     setNavigationState(updateActiveStatusByKey(navigationState, id));
@@ -151,10 +150,6 @@ const HeaderVariant01 = ({ navigationSchema }) => {
     setMenuOpen(false);
     setNavigationState(navigationSchema?.items);
     window.scrollTo(0, 0);
-    setStickyHeader(false);
-    setTimeout(() => {
-      setStickyHeader(true);
-    }, 100);
   }, [pathname]);
 
   useEffect(() => {
@@ -173,9 +168,7 @@ const HeaderVariant01 = ({ navigationSchema }) => {
 
   return (
     <>
-      <header
-        className={`b__header__header01 b__header__header01--sticky-on-desktop ${stickyHeader ? `b__header__header01--sticky-on-mobile` : ``}`}
-      >
+      <header className="b__header__header01 b__header__header01--sticky">
         <div className="container">
           <Button
             linkClassName="c__button--skip-to-content"
