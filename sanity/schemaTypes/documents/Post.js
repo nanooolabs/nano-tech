@@ -1,6 +1,6 @@
 import { Groups } from "@/sanity/utils/constants";
 import { isUniqueAcrossAllDocuments } from "@/sanity/utils/helpers";
-import { defineField, defineArrayMember } from "sanity";
+import { defineField } from "sanity";
 
 const Post = {
   name: "post",

@@ -1,11 +1,13 @@
 import React from "react";
-import Header from "@/components/blocks/header/Header01";
+import HeaderVariant01 from "@/components/blocks/header/HeaderVariant01";
 import Footer from "@/components/blocks/footer/Footer01";
+import { getNavigationBySlug } from "@/sanity/utils/queries";
 
-const Layout = ({ children }) => {
+const Layout = async ({ children }) => {
+  const data = await getNavigationBySlug(`header`);
   return (
     <>
-      <Header />
+      <HeaderVariant01 navigationSchema={data} />
       <main className="overflow-hidden">{children}</main>
       <Footer />
     </>

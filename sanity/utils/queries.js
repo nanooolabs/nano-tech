@@ -104,3 +104,13 @@ export async function getPostsByCategoryCount(categorySlug) {
     { categorySlug }
   );
 }
+
+export async function getNavigationBySlug(slug) {
+  return fetchSanity(
+    groq`*[_type == "navigation" && ${QUERY_omitDrafts} && slug.current == $slug][0]{
+      ...,
+    }`,
+    { slug },
+    { tags: ["post"] }
+  );
+}

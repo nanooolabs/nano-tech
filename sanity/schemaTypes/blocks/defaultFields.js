@@ -1,3 +1,5 @@
+import { defineField } from "sanity";
+
 export const scopedCss = {
   name: "scoped_css",
   title: "Scoped CSS",
@@ -47,6 +49,52 @@ export const generateHeadingSizeField = (name, title) => {
         { title: "H5", value: "h5" },
         { title: "H6", value: "h6" },
       ],
+    },
+  };
+};
+
+export const generateLinkField = (name, title, depth = 2, maxDepth = 4) => {
+  return {
+    type: "object",
+    name,
+    title,
+    fields: [
+      defineField({
+        name: "title",
+        title: "Title",
+        type: "string",
+      }),
+      defineField({
+        name: "destination",
+        title: "Destination",
+        type: "string",
+      }),
+      ...(depth < maxDepth
+        ? [
+            defineField({
+              name: "links",
+              type: "array",
+              of: [
+                generateLinkField(
+                  `link_count_${depth + 1}`,
+                  `Link Count ${depth + 1}`,
+                  depth + 1,
+                  maxDepth
+                ),
+              ],
+            }),
+          ]
+        : []),
+    ],
+    preview: {
+      select: {
+        title: "title",
+        destination: "destination",
+      },
+      prepare: ({ title, destination }) => ({
+        title,
+        subtitle: destination,
+      }),
     },
   };
 };
