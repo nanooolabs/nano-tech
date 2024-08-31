@@ -8,6 +8,7 @@ import { baseUrl } from "./lib/constants";
 import { locations } from "./sanity/utils/presentation";
 import { codeInput } from "@sanity/code-input";
 import { media } from "sanity-plugin-media";
+import { structure } from "./sanity/structure";
 
 export default defineConfig({
   name: "default",
@@ -15,7 +16,7 @@ export default defineConfig({
   basePath: "/studio",
   ...clientConfig,
   plugins: [
-    structureTool(),
+    structureTool({ structure }),
     presentationTool({
       name: "editor",
       title: "Editor",
