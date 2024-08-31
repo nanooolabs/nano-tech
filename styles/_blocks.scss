@@ -78,6 +78,9 @@
               text-decoration: none;
               .b__header__header01__menu-item__text {
                 padding-bottom: 1.5rem;
+                button {
+                  color: var(--t-cp-base-black);
+                }
               }
               a {
                 color: inherit;
@@ -198,6 +201,9 @@
                 .b__header__header01__menu-item {
                   &__text {
                     display: flex;
+                    button {
+                      color: var(--t-cp-base-black);
+                    }
                   }
                   &__icon {
                     opacity: 0;

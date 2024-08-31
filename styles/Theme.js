@@ -114,6 +114,7 @@ const Theme = css`
     --t-blob-color-4: #ff28b8;
     // Palette
     --t-cp-base-white: #fff;
+    --t-cp-base-black: #000;
     --t-cp-error-50: #fee4e2;
     --t-cp-error-400: #b42318;
     --t-cp-success-100: #ddffcf;
