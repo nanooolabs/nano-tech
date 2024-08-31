@@ -17,11 +17,25 @@
       border-bottom: 1px solid var(--t-border-color);
       box-shadow: 15px 5px 40px rgb(209 213 219 / 15%);
       position: relative;
+      background-color: var(--t-cp-base-white);
+      &--sticky-on-desktop {
+        @media (min-width: 992px) {
+          top: 0;
+          z-index: 99999;
+          position: sticky;
+        }
+      }
+      &--sticky-on-mobile {
+        @media (max-width: 992px) {
+          top: 0;
+          z-index: 99999;
+          position: sticky;
+        }
+      }
       &--sticky {
-        position: sticky;
         top: 0;
         z-index: 99999;
-        background-color: var(--t-cp-base-white);
+        position: sticky;
       }
       &__logo-wrapper {
         position: relative;

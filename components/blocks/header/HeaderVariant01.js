@@ -16,8 +16,10 @@ const updateActiveStatusByKey = (data, uid) => {
   });
 
   return updatedData.map((item) => {
-    if (itemFoundAtLevel && item.uid !== uid) {
-      return { ...item, active: false };
+    if (window.innerWidth >= 992) {
+      if (itemFoundAtLevel && item.uid !== uid) {
+        return { ...item, active: false };
+      }
     }
 
     if (item.links && item.links.length > 0) {
@@ -121,6 +123,7 @@ const HeaderVariant01 = ({ navigationSchema }) => {
     navigationSchema?.items
   );
   const [subMenusToggledByTab, setSubMenusToggledByTab] = useState(false);
+  const [stickyHeader, setStickyHeader] = useState(false);
 
   const handleNavigationState = (id) => {
     setNavigationState(updateActiveStatusByKey(navigationState, id));
@@ -147,9 +150,11 @@ const HeaderVariant01 = ({ navigationSchema }) => {
   useEffect(() => {
     setMenuOpen(false);
     setNavigationState(navigationSchema?.items);
+    window.scrollTo(0, 0);
+    setStickyHeader(false);
     setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 50);
+      setStickyHeader(true);
+    }, 100);
   }, [pathname]);
 
   useEffect(() => {
@@ -168,7 +173,9 @@ const HeaderVariant01 = ({ navigationSchema }) => {
 
   return (
     <>
-      <header className="b__header__header01 b__header__header01--sticky">
+      <header
+        className={`b__header__header01 b__header__header01--sticky-on-desktop ${stickyHeader ? `b__header__header01--sticky-on-mobile` : ``}`}
+      >
         <div className="container">
           <Button
             linkClassName="c__button--skip-to-content"
