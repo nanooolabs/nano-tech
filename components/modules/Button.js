@@ -134,6 +134,26 @@ const Component = styled.div`
           }
         }
       }
+      &--skip-to-content {
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+        clip: rect(0, 0, 0, 0);
+        border-width: 0;
+        white-space: nowrap;
+        &:focus {
+          height: auto;
+          margin: auto;
+          overflow: visible;
+          width: auto;
+          clip: auto;
+          top: 1rem;
+          z-index: 9;
+        }
+      }
     }
   }
 `;
@@ -142,6 +162,7 @@ const Button = ({
   title,
   destination,
   className,
+  linkClassName,
   theme = `primary`,
   size = `default`,
   actionable,
@@ -187,7 +208,7 @@ const Button = ({
           {title && (
             <Component>
               <Link
-                className="c__button__anchor-element"
+                className={`c__button__anchor-element ${linkClassName ? linkClassName : ``}`}
                 href={destination || "#"}
               >
                 <span

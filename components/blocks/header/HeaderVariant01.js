@@ -120,25 +120,44 @@ const HeaderVariant01 = ({ navigationSchema }) => {
   const [navigationState, setNavigationState] = useState(
     navigationSchema?.items
   );
-  const [windowWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 0
-  );
+  const [subMenusToggledByTab, setSubMenusToggledByTab] = useState(false);
 
   const handleNavigationState = (id) => {
     setNavigationState(updateActiveStatusByKey(navigationState, id));
+    if (window.innerWidth >= 992) {
+      setSubMenusToggledByTab(true);
+    }
   };
 
   const pathname = usePathname();
 
   const handleResize = () => {
-    setNavigationState(navigationSchema?.items);
+    if (window.innerWidth >= 992) {
+      setNavigationState(navigationSchema?.items);
+    }
+  };
+
+  const handleMouseMove = () => {
+    if (subMenusToggledByTab) {
+      setNavigationState(navigationSchema?.items);
+      setSubMenusToggledByTab(false);
+    }
   };
 
   useEffect(() => {
     setMenuOpen(false);
     setNavigationState(navigationSchema?.items);
-    window.scrollTo(0, 0);
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 50);
   }, [pathname]);
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [subMenusToggledByTab]);
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
@@ -151,6 +170,12 @@ const HeaderVariant01 = ({ navigationSchema }) => {
     <>
       <header className="b__header__header01 b__header__header01--sticky">
         <div className="container">
+          <Button
+            linkClassName="c__button--skip-to-content"
+            theme="primary"
+            title={`Skip to Content`}
+            destination={`#main-content`}
+          />
           <div className="b__header__header01__wrapper">
             <Link
               className="u__text-decoration-none u__inherited-anchor"

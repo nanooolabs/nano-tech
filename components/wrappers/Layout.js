@@ -8,7 +8,9 @@ const Layout = async ({ children }) => {
   return (
     <>
       <HeaderVariant01 navigationSchema={data} />
-      <main className="overflow-hidden">{children}</main>
+      <main id="main-content" className="overflow-hidden">
+        {children}
+      </main>
       <Footer />
     </>
   );
