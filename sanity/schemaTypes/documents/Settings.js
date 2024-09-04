@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "site",
-  title: "Site settings",
+  name: "settings",
+  title: "Settings",
   type: "document",
   groups: [
     { name: "general", title: "General", default: true },
