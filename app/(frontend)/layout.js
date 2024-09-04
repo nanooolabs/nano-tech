@@ -9,15 +9,14 @@ import localFont from "next/font/local";
 import { getSiteSettings } from "@/sanity/utils/queries";
 import urlFor from "@/lib/imageUrlBuilder";
 
-const siteSettings = await getSiteSettings();
-const favicon = urlFor(siteSettings.favicon).url();
-
 export const customFont = localFont({
   src: "../../public/fonts/Pacaembu.woff2",
   variable: "--t-font-family-global",
 });
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const siteSettings = await getSiteSettings();
+  const favicon = urlFor(siteSettings.favicon).url();
   console.log(favicon);
   return (
     <html lang="en">
