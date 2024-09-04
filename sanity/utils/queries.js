@@ -87,7 +87,14 @@ export async function getPostsByCategory(start, end, categorySlug) {
 export async function getCategoryBySlug(categorySlug) {
   return fetchSanity(
     groq`*[_type == "post_category" && ${QUERY_omitDrafts} && slug.current == $categorySlug][0] {
-      title
+      title,
+      meta_title,
+      meta_description,
+      featured_image {
+        ... {
+          asset->
+        }
+      }
     }`,
     { categorySlug },
     { tags: ["post"] }

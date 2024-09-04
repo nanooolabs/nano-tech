@@ -4,6 +4,7 @@ import { getMetaData } from "@/lib/seo";
 import { getPostsByCategory, getCategoryBySlug } from "@/sanity/utils/queries";
 import { notFound } from "next/navigation";
 import { generateBlogHeroData, generateBlogMetaData } from "@/lib/constants";
+import urlBuilder from "@sanity/image-url";
 
 export default async function BlogCategoryArchive({ params }) {
   const { slug } = params;
@@ -28,7 +29,10 @@ export const generateMetadata = async ({ params }) => {
   const category = await getCategoryBySlug(slug);
   if (!data || !data.length || !category) return {};
   const staticMetaData = generateBlogMetaData(
-    `Posts tagged in ${category.title} | ${organization}`
+    category.meta_title ||
+      `Posts tagged in ${category.title} | ${organization}`,
+    category.meta_description,
+    category.featured_image || null
   );
 
   return getMetaData(staticMetaData, `blog/category/${slug}`, null, null);
