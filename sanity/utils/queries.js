@@ -130,3 +130,22 @@ export async function getNavigationBySlug(slug) {
     { tags: ["navigation"] }
   );
 }
+
+export async function getSiteSettings() {
+  return fetchSanity(
+    groq`*[_type == "site_settings"][0]{
+      ...,
+      favicon {
+        ... {
+          asset->
+        }
+      },
+      logo {
+        ... {
+          asset->
+        }
+      }
+    }`,
+    { tags: ["site_settings"] }
+  );
+}

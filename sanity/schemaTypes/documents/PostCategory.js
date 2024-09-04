@@ -12,7 +12,7 @@ const PostCategory = {
       name: "title",
       title: "Title",
       type: "string",
-      validation: (rule) => rule.warning("Page title is required"),
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "slug",
@@ -29,7 +29,7 @@ const PostCategory = {
       title: "Meta Title",
       type: "string",
       group: "seo",
-      validation: (rule) => rule.warning("Meta title is required"),
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "meta_description",

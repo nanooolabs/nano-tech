@@ -13,12 +13,11 @@ export const structure = (S) =>
       S.documentTypeListItem("form").title("Forms"),
       S.documentTypeListItem("navigation").title("Navigation"),
       S.divider(),
-      // Our singleton type has a list item with a custom child
-      S.listItem().title("Settings").id("settings").child(
-        // Instead of rendering a list of documents, we render a single
-        // document, specifying the `documentId` manually to ensure
-        // that we're editing the single instance of the document
-        S.document().schemaType("settings").documentId("settings")
-      ),
-      //   S.documentTypeListItems(),
+      // Singleton
+      S.listItem()
+        .title("Site Settings")
+        .id("site_settings")
+        .child(
+          S.document().schemaType("site_settings").documentId("site_settings")
+        ),
     ]);

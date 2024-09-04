@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "settings",
-  title: "Settings",
+  name: "site_settings",
+  title: "Site Settings",
   type: "document",
   groups: [
     { name: "general", title: "General", default: true },
@@ -10,19 +10,15 @@ export default defineType({
   ],
   fields: [
     defineField({
-      name: "title",
-      type: "string",
-      group: "general",
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
       name: "logo",
       title: "Logo",
       type: "image",
-      options: {
-        collapsable: true,
-        collapsed: true,
-      },
+      group: "general",
+    }),
+    defineField({
+      name: "favicon",
+      title: "Favicon",
+      type: "image",
       group: "general",
     }),
     defineField({

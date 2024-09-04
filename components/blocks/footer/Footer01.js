@@ -1,3 +1,4 @@
+import { organization } from "@/lib/constants";
 import React from "react";
 
 const Footer = () => {
@@ -9,7 +10,7 @@ const Footer = () => {
             <p className="mb-0" style={{ fontSize: `0.85rem` }}>
               © Copyright{" "}
               <a href="/" className="">
-                Mosibello
+                {organization || ``}
               </a>{" "}
               {new Date().getFullYear()}
             </p>

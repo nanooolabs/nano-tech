@@ -6,6 +6,11 @@ import GlobalStyles from "@/styles/GlobalStyles";
 import VisualEditingControls from "@/components/wrappers/VisualEditingControls";
 import NextTopLoader from "nextjs-toploader";
 import localFont from "next/font/local";
+import { getSiteSettings } from "@/sanity/utils/queries";
+import urlFor from "@/lib/imageUrlBuilder";
+
+const siteSettings = await getSiteSettings();
+const favicon = urlFor(siteSettings.favicon).url();
 
 export const customFont = localFont({
   src: "../../public/fonts/Pacaembu.woff2",
@@ -13,6 +18,7 @@ export const customFont = localFont({
 });
 
 export default function RootLayout({ children }) {
+  console.log(favicon);
   return (
     <html lang="en">
       <body
@@ -20,6 +26,7 @@ export default function RootLayout({ children }) {
         data-prod-url={process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}
         className={customFont.variable}
       >
+        <link rel="icon" href={favicon || ``} sizes="any" />
         <NextTopLoader
           color="var(--t-primary-branding-color)"
           showSpinner={false}

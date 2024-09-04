@@ -31,7 +31,7 @@ const Page = {
       title: "Meta Title",
       type: "string",
       group: "seo",
-      validation: (rule) => rule.warning("Meta title is required"),
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "meta_description",

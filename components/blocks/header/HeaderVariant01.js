@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Button from "@/components/modules/Button";
+import { organization } from "@/lib/constants";
 
 const updateActiveStatusByKey = (data, uid) => {
   let itemFoundAtLevel = false;
@@ -183,7 +184,7 @@ const HeaderVariant01 = ({ navigationSchema }) => {
             >
               <div className="b__header__header01__logo-wrapper u__cursor-pointer">
                 <span className="b__header__header01__logo u__font-family-heading u__f-900 u__heading-color--primary u__h3 u__letter-spacing--tight">
-                  Mosibello
+                  {organization || ``}
                 </span>
               </div>
             </Link>
