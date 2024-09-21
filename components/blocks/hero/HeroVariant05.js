@@ -135,18 +135,20 @@ const HeroVariant05 = ({ data }) => {
           </div>
           <div className="col-lg-6">
             <div className="ps-lg-5">
-              <div className="b__hero__variant05__form-wrapper">
-                <Form
-                  isValid={isValid}
-                  formFields={form_fields.code}
-                  register={register}
-                  errors={errors}
-                  control={control}
-                  onSubmit={handleSubmit(onSubmit)}
-                  payloadPosting={payloadPosting}
-                  formMessage={formMessage}
-                />
-              </div>
+              {form_fields && (
+                <div className="b__hero__variant05__form-wrapper">
+                  <Form
+                    isValid={isValid}
+                    formFields={form_fields.code}
+                    register={register}
+                    errors={errors}
+                    control={control}
+                    onSubmit={handleSubmit(onSubmit)}
+                    payloadPosting={payloadPosting}
+                    formMessage={formMessage}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
