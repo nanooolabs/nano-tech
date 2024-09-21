@@ -55,7 +55,7 @@ const HeroVariant05 = ({ data }) => {
     mode: "all",
   });
 
-  const { form_fields = null, formspark_id = null } = data?.form;
+  const { form_fields = null, formspark_id = null } = data?.form || {};
 
   const FORMSPARK_FORM_ID = stegaClean(formspark_id);
 
