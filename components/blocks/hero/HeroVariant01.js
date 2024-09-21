@@ -2,6 +2,7 @@ import Button from "@/components/modules/Button";
 import parse from "html-react-parser";
 import Bounded from "@/components/wrappers/Bounded";
 import BlurryBlob from "@/components/modules/BlurryBlob";
+import Heading from "@/components/modules/Heading";
 
 const HeroVariant01 = ({ data }) => {
   return (
@@ -25,14 +26,19 @@ const HeroVariant01 = ({ data }) => {
         <div className={`${data.align_left ? `text-start` : `text-center`}`}>
           {data.heading && (
             <div className="c__heading-wrapper mb-4">
-              <h1 className="c__heading u__d1">{parse(data.heading)}</h1>
+              <Heading tag={data?.heading_tag || "h1"} className={`u__d1`}>
+                {data.heading}
+              </Heading>
             </div>
           )}
           {data.description && (
             <div className="c__subtitle-wrapper mb-4">
-              <h2 className="c__heading u__h5  mb-2">
-                {parse(data.description)}
-              </h2>
+              <Heading
+                tag={data?.description_heading_tag || "h2"}
+                className={`u__h5`}
+              >
+                {data.description}
+              </Heading>
             </div>
           )}
           {data.content && (
@@ -48,7 +54,7 @@ const HeroVariant01 = ({ data }) => {
           {data.button_title && (
             <div className="c__button-wrapper mt-4 pt-3">
               <Button
-                destination={data?.button_destination}
+                destination={data.button_destination}
                 title={data.button_title}
               />
             </div>

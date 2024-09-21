@@ -1,5 +1,6 @@
 import { defineField, defineType } from "sanity";
-import { scopedCss } from "../defaultFields";
+import { scopedCss, generateHeadingTagField } from "../defaultFields";
+
 const blockCategory = "hero";
 const HeroVariant01 = defineType({
   name: "HeroVariant01",
@@ -44,18 +45,25 @@ const HeroVariant01 = defineType({
       name: "heading",
       title: "Heading",
       type: "string",
-      initialValue: "Powerful Section Heading to Insure Readability",
+      initialValue: `Data to enrich your <br class="u__show-after-992" />online business`,
       group: "content",
     }),
+    defineField(generateHeadingTagField(`heading_tag`, `Heading Tag`)),
     defineField({
       name: "description",
       title: "Description",
       type: "text",
       initialValue:
-        "Gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet",
+        "Gubergren, no sea takimata sanctus est <br>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet",
       rows: 4,
       group: "content",
     }),
+    defineField(
+      generateHeadingTagField(
+        `description_heading_tag`,
+        `Description Heading Tag`
+      )
+    ),
     defineField({
       name: "content",
       title: "Content",

@@ -4,7 +4,7 @@ import { QUERY_omitDrafts } from "./constants";
 
 export async function getPageBySlug(slug) {
   return fetchSanity(
-    groq`*[_type == "page" && ${QUERY_omitDrafts} && slug.current == $slug][0]{
+    groq`*[_type == "page" && slug.current == $slug][0]{
     ...,
     page_builder[] {
       ...,
@@ -31,7 +31,7 @@ export async function getPageBySlug(slug) {
 
 export async function getPostBySlug(slug) {
   return fetchSanity(
-    groq`*[_type == "post" && ${QUERY_omitDrafts} && slug.current == $slug][0]{
+    groq`*[_type == "post" && slug.current == $slug][0]{
       ...,
       content[]{
         ...,

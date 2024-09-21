@@ -102,6 +102,14 @@ const Page = {
                 ?.map((elem) => elem.name),
             },
           ],
+          views: [
+            {
+              name: "grid",
+              previewImageUrl: (schemaTypeName) =>
+                `/static/previews/blocks/${schemaTypeName}.png`,
+            },
+            { name: "list" },
+          ],
         },
       },
     }),
