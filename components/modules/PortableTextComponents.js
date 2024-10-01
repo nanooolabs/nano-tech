@@ -2,6 +2,7 @@ import parse from "html-react-parser";
 import { stegaClean } from "@sanity/client/stega";
 import Image from "next/image";
 import urlFor from "@/lib/imageUrlBuilder";
+import { fallbackImageBlurDataUrl } from "@/lib/constants";
 
 const PortableTextComponents = {
   types: {
@@ -17,7 +18,9 @@ const PortableTextComponents = {
                 <Image
                   className="c__richtext-field__image"
                   placeholder="blur"
-                  blurDataURL={value.asset.metadata?.lqip ?? ""}
+                  blurDataURL={
+                    value.asset.metadata?.lqip ?? fallbackImageBlurDataUrl
+                  }
                   src={urlFor(value.asset).url()}
                   alt={value.alt ?? ""}
                   sizes="100vw"

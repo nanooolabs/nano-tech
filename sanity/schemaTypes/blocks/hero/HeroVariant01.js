@@ -1,10 +1,12 @@
 import { defineField, defineType } from "sanity";
 import { scopedCss, generateHeadingTagField } from "../defaultFields";
 
+const blockLabel = `Hero Variant 01`;
 const blockCategory = "hero";
+
 const HeroVariant01 = defineType({
   name: "HeroVariant01",
-  title: "Hero Variant 01",
+  title: blockLabel,
   type: "object",
   _menuCategory: blockCategory,
   groups: [
@@ -91,10 +93,11 @@ const HeroVariant01 = defineType({
       heading: "heading",
     },
     prepare(selection) {
+      console.log(selection);
       const { heading } = selection;
       return {
         title: heading || "Heading needs to be set",
-        subtitle: "Hero Variant 01",
+        subtitle: blockLabel,
       };
     },
   },

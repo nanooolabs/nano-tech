@@ -5,10 +5,9 @@ import Image from "next/image";
 import urlFor from "@/lib/imageUrlBuilder";
 import Heading from "@/components/modules/Heading";
 import Link from "next/link";
-import { PortableText } from "@portabletext/react";
 import { formatDate } from "@/lib/helpers";
 import { stegaClean } from "@sanity/client/stega";
-import PortableTextComponents from "@/components/modules/PortableTextComponents";
+import ArticleContent from "@/components/modules/ArticleContent";
 
 const Wrapper = styled.article`
   .b__post__variant01 {
@@ -93,11 +92,8 @@ const PostVariant01 = ({ data }) => {
                 </div>
               )}
               {data.content && (
-                <div className="b__post__variant01__article c__article-content">
-                  <PortableText
-                    value={data.content}
-                    components={PortableTextComponents}
-                  />
+                <div className="b__post__variant01__article">
+                  <ArticleContent content={data.content} />
                 </div>
               )}
             </div>
