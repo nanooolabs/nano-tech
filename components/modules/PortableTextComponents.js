@@ -26,6 +26,9 @@ const PortableTextComponents = {
                   sizes="100vw"
                   width={500}
                   height={400}
+                  data-has-blur-data-url={
+                    value.asset.metadata ? `true` : `false`
+                  }
                 />
               </div>
             </>

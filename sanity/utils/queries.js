@@ -21,13 +21,6 @@ export async function getPageBySlug(slug) {
           asset->
         }
       },
-      content[]{
-        ...,
-        _type == "image" => {
-          ...,
-          asset->
-        }
-      },
       "form": form->
     }
 }`,
