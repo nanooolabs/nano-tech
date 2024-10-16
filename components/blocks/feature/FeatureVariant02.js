@@ -71,6 +71,7 @@ const FeatureVariant02 = ({ data }) => {
                   >
                     <IconCard
                       style={data?.card_style}
+                      headingTag={data.card_heading_tag}
                       icon={imageObj}
                       heading={heading}
                       description={description}

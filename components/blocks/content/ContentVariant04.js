@@ -26,7 +26,7 @@ const ContentVariant04 = ({ data }) => {
           <div className="b__content__variant04__content-wrapper mx-auto">
             {data?.heading && (
               <div className="c__heading-wrapper">
-                <Heading tag={data?.heading_tag} className="u__h1">
+                <Heading tag={data.heading_tag} className="u__h1">
                   {data.heading}
                 </Heading>
               </div>

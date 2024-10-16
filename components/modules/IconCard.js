@@ -1,8 +1,10 @@
 "use client";
 import styled from "styled-components";
-import parse from "html-react-parser";
 import Button from "./Button";
 import Image from "next/image";
+import Heading from "./Heading";
+import Description from "./Description";
+import { stegaClean } from "@sanity/client/stega";
 
 const Component = styled.div`
   padding: 2rem 1.5rem;
@@ -46,13 +48,14 @@ const IconCard = ({
   style = "shadow",
   icon,
   heading,
+  headingTag,
   description,
   buttonTitle,
   buttonDestination,
   buttonStyle = "link",
 }) => {
   return (
-    <Component className={`c__icon-card c__icon-card--${style}`}>
+    <Component className={`c__icon-card c__icon-card--${stegaClean(style)}`}>
       <div className="c__icon-card__wrapper">
         {icon && icon.src && (
           <div className="c__icon-card__icon-wrapper">
@@ -70,17 +73,24 @@ const IconCard = ({
         )}
         {heading && (
           <div className="c__icon-card__heading-wrapper">
-            <h3 className="c__icon-card__heading u__h5">{parse(heading)}</h3>
+            <Heading
+              tag={headingTag || `h3`}
+              className="c__icon-card__heading u__h5"
+            >
+              {heading}
+            </Heading>
           </div>
         )}
         {description && (
-          <div className="c__icon-card__description-wrapper mt-2 mb-3">
-            <p className="c__icon-card__description mb-0">
-              {parse(description)}
-            </p>
+          <div
+            className={`c__icon-card__description-wrapper ${buttonTitle ? `mt-2 mb-3` : ``}`}
+          >
+            <Description className="c__icon-card__description mb-0">
+              {description}
+            </Description>
           </div>
         )}
-        {buttonTitle && (
+        {stegaClean(buttonTitle) && (
           <div className="c__icon-card__button-wrapper mt-auto pt-4">
             <Button
               destination={buttonDestination}

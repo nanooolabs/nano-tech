@@ -1,9 +1,11 @@
 import { defineField, defineType } from "sanity";
 import { scopedCss, generateHeadingTagField } from "../defaultFields";
-const blockCategory = "feature";
-const FeatureVariant02 = defineType({
-  name: "FeatureVariant02",
-  title: "Feature Variant 02",
+
+const blockLabel = `Content Variant 05`;
+const blockCategory = "content";
+const ContentVariant05 = defineType({
+  name: "ContentVariant05",
+  title: blockLabel,
   type: "object",
   _menuCategory: blockCategory,
   groups: [
@@ -31,9 +33,10 @@ const FeatureVariant02 = defineType({
       name: "heading",
       title: "Heading",
       type: "string",
-      initialValue: "Powerful Section Heading to Insure Readability",
+      initialValue: "Data to Enrich Your Online Business",
       group: "content",
     }),
+    defineField(generateHeadingTagField(`heading_tag`, `Heading Tag`)),
     defineField({
       name: "description",
       title: "Description",
@@ -43,19 +46,36 @@ const FeatureVariant02 = defineType({
       rows: 4,
       group: "content",
     }),
-
     defineField({
-      name: "justify_content",
-      title: "Justify Content",
-      type: "string",
-      initialValue: "start",
+      name: "content",
+      title: "Content",
+      type: "array",
+      of: [
+        {
+          type: "block",
+        },
+        {
+          type: "image",
+          fields: [
+            {
+              type: "text",
+              name: "alt",
+              title: "Alternative text",
+              options: {
+                isHighlighted: true,
+              },
+            },
+          ],
+        },
+        {
+          type: "code",
+          options: {
+            language: "html",
+            languageAlternatives: [{ title: "HTML", value: "html" }],
+          },
+        },
+      ],
       group: "content",
-      options: {
-        list: [
-          { title: "Start", value: "start" },
-          { title: "Center", value: "center" },
-        ],
-      },
     }),
     defineField({
       name: "repeater",
@@ -96,7 +116,7 @@ const FeatureVariant02 = defineType({
               name: "button_title",
               title: "Button Title",
               type: "string",
-              initialValue: "Learn More",
+              initialValue: "",
             }),
             defineField({
               name: "button_destination",
@@ -124,6 +144,13 @@ const FeatureVariant02 = defineType({
         ],
       },
     }),
+    defineField({
+      name: "align_items_center",
+      title: "Align Items Center",
+      type: "boolean",
+      initialValue: () => false,
+      group: "style",
+    }),
   ],
   preview: {
     select: {
@@ -133,10 +160,10 @@ const FeatureVariant02 = defineType({
       const { heading } = selection;
       return {
         title: heading || "Heading needs to be set",
-        subtitle: "Feature Variant 02",
+        subtitle: blockLabel,
       };
     },
   },
 });
 
-export default FeatureVariant02;
+export default ContentVariant05;
