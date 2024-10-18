@@ -4,12 +4,14 @@ import * as AllHeroes from "../blocks/hero";
 import * as AllFeatures from "../blocks/feature";
 import * as AllContents from "../blocks/content";
 import * as AllFaqs from "../blocks/faq";
+import * as AllCtas from "../blocks/cta";
 
 const categories = {
   hero: AllHeroes,
   feature: AllFeatures,
   content: AllContents,
   faq: AllFaqs,
+  cta: AllCtas,
 };
 
 const BlockNotFound = ({ _type }) => {

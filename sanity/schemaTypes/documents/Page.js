@@ -101,6 +101,13 @@ const Page = {
                 .filter((elem) => elem._menuCategory === "faq")
                 ?.map((elem) => elem.name),
             },
+            {
+              name: "cta",
+              title: "CTAs",
+              of: pageBuilderBlocks
+                .filter((elem) => elem._menuCategory === "cta")
+                ?.map((elem) => elem.name),
+            },
           ],
           views: [
             {

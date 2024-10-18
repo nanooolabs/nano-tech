@@ -154,6 +154,13 @@ const Component = styled.div`
           z-index: 9;
         }
       }
+      &--inverted {
+        background: var(--t-cp-base-white);
+        color: var(--t-primary-branding-color);
+        &:hover {
+          background: #eee;
+        }
+      }
     }
   }
 `;
