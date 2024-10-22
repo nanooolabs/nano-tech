@@ -40,8 +40,29 @@ const HeroVariant03 = defineType({
       },
     }),
     defineField({
+      name: "image",
+      title: "Image",
+      type: "image",
+      group: "content",
+      options: { hotspot: true },
+      fields: [
+        {
+          name: "alt",
+          title: "Alt",
+          type: "string",
+        },
+      ],
+    }),
+    defineField({
       name: "align_left",
       title: "Align Left",
+      type: "boolean",
+      initialValue: () => false,
+      group: "style",
+    }),
+    defineField({
+      name: "enable_background_tint",
+      title: "Enable Background Tint",
       type: "boolean",
       initialValue: () => false,
       group: "style",

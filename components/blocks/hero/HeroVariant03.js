@@ -1,8 +1,10 @@
 import Button from "@/components/modules/Button";
-import parse from "html-react-parser";
 import Bounded from "@/components/wrappers/Bounded";
 import { stegaClean } from "@sanity/client/stega";
 import Heading from "@/components/modules/Heading";
+import Image from "next/image";
+import urlFor from "@/lib/imageUrlBuilder";
+import BackgroundTint from "@/components/modules/BackgroundTint";
 
 const HeroVariant03 = ({ data }) => {
   return (
@@ -12,6 +14,19 @@ const HeroVariant03 = ({ data }) => {
       scopedCss={data.scoped_css}
       className={`b__hero__variant03 overflow-hidden position-relative ${data.background_theme && `u__background-${stegaClean(data.background_theme)}`}`}
     >
+      {data.image && (
+        <div className="c__absolute-image">
+          <Image
+            fill={true}
+            placeholder="blur"
+            blurDataURL={data.image.asset?.metadata?.lqip}
+            src={urlFor(data.image).url()}
+            alt={data.image.alt ?? ""}
+            sizes="100%"
+          />
+        </div>
+      )}
+      {data.enable_background_tint && <BackgroundTint />}
       <div
         className={`container position-relative u__z-index-1 ${data.background_theme && `u__text-inverted`}`}
       >
