@@ -1,10 +1,10 @@
-import ContentVariant05 from "@/components/blocks/content/ContentVariant05";
+// import ContentVariant06 from "@/components/blocks/content/ContentVariant06";
 import React from "react";
 
 const page = () => {
   return (
     <>
-      {/* <ContentVariant05 /> */}
+      {/* <ContentVariant06 /> */}
       <div>
         <span>Page</span>
       </div>

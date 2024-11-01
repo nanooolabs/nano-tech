@@ -52,7 +52,7 @@ const IconCard = ({
   description,
   buttonTitle,
   buttonDestination,
-  buttonStyle = "link",
+  buttonTheme = "link",
 }) => {
   return (
     <Component className={`c__icon-card c__icon-card--${stegaClean(style)}`}>
@@ -95,7 +95,7 @@ const IconCard = ({
             <Button
               destination={buttonDestination}
               title={buttonTitle}
-              style={buttonStyle}
+              theme={buttonTheme}
             />
           </div>
         )}
