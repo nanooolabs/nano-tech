@@ -4,6 +4,7 @@ import ContentVariant03 from "./ContentVariant03";
 import ContentVariant04 from "./ContentVariant04";
 import ContentVariant05 from "./ContentVariant05";
 import ContentVariant06 from "./ContentVariant06";
+import ContentVariant07 from "./ContentVariant07";
 
 export {
   ContentVariant01,
@@ -12,4 +13,5 @@ export {
   ContentVariant04,
   ContentVariant05,
   ContentVariant06,
+  ContentVariant07,
 };

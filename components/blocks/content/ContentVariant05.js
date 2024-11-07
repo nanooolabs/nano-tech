@@ -49,13 +49,13 @@ const ContentVariant05 = ({ data }) => {
     >
       <Wrapper>
         <div className="container">
-          <div className="c__heading-wrapper mb-4">
-            {data.heading && (
+          {data.heading && (
+            <div className="c__heading-wrapper mb-4">
               <Heading tag={data.heading_tag} className="u__h2">
                 {data.heading}
               </Heading>
-            )}
-          </div>
+            </div>
+          )}
           {data.description && (
             <div className={`c__description-wrapper`}>
               <Description className="u__subtitle">

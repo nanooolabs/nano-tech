@@ -50,6 +50,8 @@ export const generateHeadingSizeField = (name, title) => {
         { title: "H4", value: "h4" },
         { title: "H5", value: "h5" },
         { title: "H6", value: "h6" },
+        { title: "Subtitle", value: "subtitle" },
+        { title: "Paragraph", value: "p" },
       ],
     },
   };
