@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname,useSearchParams} from "next/navigation";
+import { usePathname } from "next/navigation";
 import Button from "@/components/modules/Button";
 import { organization } from "@/lib/constants";
 import { stegaClean } from "@sanity/client/stega";
@@ -116,26 +116,35 @@ const MenuLink = ({
 };
 
 const HeaderVariant01 = ({ navigationSchema }) => {
-  console.log("-> navigationSchema", navigationSchema);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [sectionId, setSectionId] = useState(null);
   const [navigationState, setNavigationState] = useState(
     navigationSchema?.items
   );
   const [subMenusToggledByTab, setSubMenusToggledByTab] = useState(false);
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
+  //
+  // useEffect(() => {
+  //   const section = searchParams.get("scroll_to_section");
+  //   if (!!section) {
+  //     setSectionId(section);
+  //   }
+  // }, [searchParams]);
+  //
+  // useEffect(() => {
+  //   console.log("-> sectionId", sectionId);
+  //   if (sectionId) {
+  //     const sectionElement = document.getElementById(sectionId);
+  //     console.log("-> sectionElement", sectionElement);
+  //     if (sectionElement) {
+  //       setTimeout(() => {
+  //         sectionElement.scrollIntoView({ behavior: "smooth" });
+  //       }, 0);
+  //     }
+  //   }
+  // }, [sectionId]);
 
-  useEffect(() => {
-    const sectionId = searchParams.get("scroll_to_section");
-    if (sectionId) {
-      setTimeout(() => {
-        const sectionElement = document.getElementById(sectionId);
-        if (sectionElement) {
-          sectionElement.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 0);
-    }
-  }, [searchParams]);
 
 
 
