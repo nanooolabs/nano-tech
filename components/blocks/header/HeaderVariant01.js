@@ -1,13 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname,useSearchParams} from "next/navigation";
 import Button from "@/components/modules/Button";
 import { organization } from "@/lib/constants";
-
+import { stegaClean } from "@sanity/client/stega";
 const updateActiveStatusByKey = (data, uid) => {
   let itemFoundAtLevel = false;
-
   const updatedData = data.map((item) => {
     if (item.uid === uid) {
       itemFoundAtLevel = true;
@@ -55,9 +54,7 @@ const MenuLink = ({
   navigationState,
 }) => {
   if (!elem) return null;
-
   const isActive = getActiveStatusByKey(navigationState, elem.uid);
-
   return (
     <li
       className={`b__header__header01__menu-item b__header__header01__menu-item-depth-${depth} ${hasChildren ? `b__header__header01__menu-item--has-children` : ``} ${isActive ? `b__header__header01__menu-item--active` : ``}`}
@@ -65,7 +62,7 @@ const MenuLink = ({
       role="none"
     >
       <div className="b__header__header01__menu-item__text">
-        <Link href={elem.destination}>{elem.title}</Link>
+        <Link href={stegaClean(elem.destination)}>{elem.title}</Link>
         {hasChildren && (
           <button
             type="button"
@@ -119,11 +116,28 @@ const MenuLink = ({
 };
 
 const HeaderVariant01 = ({ navigationSchema }) => {
+  console.log("-> navigationSchema", navigationSchema);
   const [menuOpen, setMenuOpen] = useState(false);
   const [navigationState, setNavigationState] = useState(
     navigationSchema?.items
   );
   const [subMenusToggledByTab, setSubMenusToggledByTab] = useState(false);
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const sectionId = searchParams.get("scroll_to_section");
+    if (sectionId) {
+      setTimeout(() => {
+        const sectionElement = document.getElementById(sectionId);
+        if (sectionElement) {
+          sectionElement.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 0);
+    }
+  }, [searchParams]);
+
+
 
   const handleNavigationState = (id) => {
     setNavigationState(updateActiveStatusByKey(navigationState, id));
@@ -131,8 +145,6 @@ const HeaderVariant01 = ({ navigationSchema }) => {
       setSubMenusToggledByTab(true);
     }
   };
-
-  const pathname = usePathname();
 
   const handleResize = () => {
     if (window.innerWidth >= 992) {
@@ -151,7 +163,7 @@ const HeaderVariant01 = ({ navigationSchema }) => {
     setMenuOpen(false);
     setNavigationState(navigationSchema?.items);
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname,navigationSchema]);
 
   useEffect(() => {
     window.addEventListener("mousemove", handleMouseMove);
