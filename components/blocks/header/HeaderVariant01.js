@@ -227,7 +227,11 @@ const HeaderVariant01 = ({ navigationSchema }) => {
                     );
                   })}
                 </ul>
-                <Button title={`Get Started`} destination={``} />
+                <Button
+                    className="text-center w-100"
+                    title={`Contact Us`}
+                    destination={`/contact-us`}
+                />
               </nav>
             </div>
             <div className="b__header__header01__hamburger-wrapper">
@@ -273,8 +277,8 @@ const HeaderVariant01 = ({ navigationSchema }) => {
                   <div className="mt-4 pt-2">
                     <Button
                       className="text-center w-100"
-                      title={`Get Started`}
-                      destination={``}
+                      title={`Contact Us`}
+                      destination={`/contact-us`}
                     />
                   </div>
                 </nav>
