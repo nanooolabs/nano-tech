@@ -62,7 +62,7 @@ const MenuLink = ({
       role="none"
     >
       <div className="b__header__header01__menu-item__text">
-        <Link href={stegaClean(elem.destination)}>{elem.title}</Link>
+        <Link href={stegaClean(elem.destination ?? "")}>{elem.title}</Link>
         {hasChildren && (
           <button
             type="button"
@@ -117,7 +117,6 @@ const MenuLink = ({
 
 const HeaderVariant01 = ({ navigationSchema }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [sectionId, setSectionId] = useState(null);
   const [navigationState, setNavigationState] = useState(
     navigationSchema?.items
   );
