@@ -21,6 +21,7 @@ export default async function Page({ params }) {
 export const generateMetadata = async ({ params }) => {
   const slug = params.slug.join("/");
   const data = await getPageBySlug(slug);
+  console.log("-> getMetaData(data)", getMetaData(data));
   if (!data) return {};
   return getMetaData(data);
 };
