@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import Button from "@/components/modules/Button";
 import { organization } from "@/lib/constants";
 import { stegaClean } from "@sanity/client/stega";
+import Image from "next/image"
+
 const updateActiveStatusByKey = (data, uid) => {
   let itemFoundAtLevel = false;
   const updatedData = data.map((item) => {
@@ -202,7 +204,14 @@ const HeaderVariant01 = ({ navigationSchema }) => {
               className="u__text-decoration-none u__inherited-anchor"
               href="/"
             >
-              <div className="b__header__header01__logo-wrapper u__cursor-pointer">
+              <div className="b__header__header01__logo-wrapper u__cursor-pointer d-flex items-center gap-x-3 md:gap-x-4">
+                <Image
+                    src={"/static/logo/NanoLabsLogo.png"}
+                    width={40}
+                    height={40}
+                    className="b__header__header01__logo-image object-contain"
+                    alt="NanoLabs Logo"
+                />
                 <span className="b__header__header01__logo u__font-family-heading u__f-900 u__heading-color--primary u__h3 u__letter-spacing--tight">
                   {organization || ``}
                 </span>

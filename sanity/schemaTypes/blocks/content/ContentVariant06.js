@@ -102,20 +102,46 @@ const ContentVariant06 = defineType({
       ],
       group: "content",
     }),
+
+
     defineField({
-      name: "image",
-      title: "Image",
-      type: "image",
-      group: "content",
-      options: { hotspot: true },
-      fields: [
+      name: "images",
+      title: "Images",
+      type: "array",
+      of: [
         {
-          name: "alt",
-          title: "Alt",
-          type: "string",
-        },
+          name: "image",
+          title: "Image",
+          type: "image",
+          group: "content",
+          options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              title: "Alt",
+              type: "string",
+            },
+          ],
+        }
       ],
     }),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     defineField({
       name: "repeater",
       title: "Repeater",
