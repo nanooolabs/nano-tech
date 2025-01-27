@@ -8,6 +8,7 @@ import NextTopLoader from "nextjs-toploader";
 import localFont from "next/font/local";
 import { getSiteSettings } from "@/sanity/utils/queries";
 import urlFor from "@/lib/imageUrlBuilder";
+import Script from 'next/script';
 
 export const customFont = localFont({
   src: "../../public/fonts/Pacaembu.woff2",
@@ -24,6 +25,19 @@ export default async function RootLayout({ children }) {
         data-prod-url={process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}
         className={customFont.variable}
       >
+      {/* Google Tag Script */}
+      <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-PH64RRKF5K"
+          strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-PH64RRKF5K');
+          `}
+      </Script>
         <link rel="icon" href={favicon || ``} sizes="any" />
         <NextTopLoader
           color="var(--t-primary-branding-color)"
