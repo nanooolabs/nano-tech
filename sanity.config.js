@@ -12,7 +12,6 @@ import { structure } from "./sanity/structure";
 
 const singletonActions = new Set(["publish", "discardChanges", "restore"]);
 const singletonTypes = new Set(["site_settings"]);
-
 export default defineConfig({
   name: "default",
   title: `${organization} Studio`,
@@ -34,6 +33,11 @@ export default defineConfig({
     codeInput(),
     media(),
   ],
+  api: {
+    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+    dataset: process.env.NEXT_PUBLIC_SANITY_STUDIO_DATASET,
+  },
+  studioHost: process.env.NEXT_PUBLIC_SANITY_STUDIO_HOSTNAME,
   schema: {
     types: schemaTypes,
     templates: (templates) =>
